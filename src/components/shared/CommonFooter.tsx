@@ -1,9 +1,150 @@
-import React from 'react'
+import { 
+  FaFacebookF, 
+  FaTwitter, 
+  FaInstagram, 
+  FaLinkedinIn,
+  FaHeart,
+  FaPhone,
+  FaEnvelope,
+  FaMapMarkerAlt
+} from "react-icons/fa";
 
-function CommonFooter() {
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <div>CommonFooter</div>
-  )
-}
+    <footer className="bg-gray-900 text-white">
+      <div className="container mx-auto px-4 py-8">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          
+          {/* Brand Column */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-blue-600 rounded-full"></div>
+              <span className="text-xl font-bold">TravelBuddy</span>
+            </div>
+            <p className="text-gray-400 text-sm max-w-xs">
+              Your trusted travel companion for unforgettable journeys and authentic experiences.
+            </p>
+            
+            {/* Social Links */}
+            <div className="flex gap-3 pt-4">
+              {[
+                { icon: FaFacebookF, label: "Facebook" },
+                { icon: FaTwitter, label: "Twitter" },
+                { icon: FaInstagram, label: "Instagram" },
+                { icon: FaLinkedinIn, label: "LinkedIn" }
+              ].map((social) => (
+                <a
+                  key={social.label}
+                  href="#"
+                  className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition-colors duration-300"
+                  aria-label={social.label}
+                >
+                  <social.icon size={14} />
+                </a>
+              ))}
+            </div>
+          </div>
 
-export default CommonFooter
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              {[
+                "Home",
+                "Destinations",
+                "Packages",
+                "About Us",
+                "Contact"
+              ].map((link) => (
+                <li key={link}>
+                  <a 
+                    href="#" 
+                    className="text-gray-400 hover:text-white transition-colors duration-300 text-sm"
+                  >
+                    {link}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
+            <ul className="space-y-3">
+              <li className="flex items-center gap-3 text-gray-400 text-sm">
+                <FaMapMarkerAlt className="text-blue-500" />
+                <span>123 Travel Street, Adventure City</span>
+              </li>
+              <li className="flex items-center gap-3 text-gray-400 text-sm">
+                <FaPhone className="text-blue-500" />
+                <span>+1 (555) 123-4567</span>
+              </li>
+              <li className="flex items-center gap-3 text-gray-400 text-sm">
+                <FaEnvelope className="text-blue-500" />
+                <span>hello@travelbuddy.com</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="border-t border-gray-800 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            {/* Copyright */}
+            <div className="text-gray-500 text-sm text-center md:text-left">
+              <p>
+                © {currentYear} TravelBuddy. All rights reserved.
+              </p>
+            </div>
+
+            {/* Made with love */}
+            <div className="flex items-center gap-2 text-gray-500 text-sm">
+              <span>Made with</span>
+              <FaHeart className="text-red-500 animate-pulse" />
+              <span>for travelers</span>
+            </div>
+
+            {/* Legal Links */}
+            <div className="flex gap-6 text-sm">
+              <a 
+                href="#" 
+                className="text-gray-400 hover:text-white transition-colors duration-300"
+              >
+                Privacy Policy
+              </a>
+              <a 
+                href="#" 
+                className="text-gray-400 hover:text-white transition-colors duration-300"
+              >
+                Terms of Service
+              </a>
+              <a 
+                href="#" 
+                className="text-gray-400 hover:text-white transition-colors duration-300"
+              >
+                Cookies
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Fixed bottom CTA for mobile */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-blue-600 p-4">
+        <div className="container mx-auto flex justify-between items-center">
+          <div>
+            <p className="text-sm font-semibold">Ready to travel?</p>
+            <p className="text-xs opacity-90">Book your next adventure now!</p>
+          </div>
+          <button className="bg-white text-blue-600 font-semibold px-4 py-2 rounded-lg text-sm hover:bg-gray-100 transition-colors">
+            Get Started
+          </button>
+        </div>
+      </div>
+    </footer>
+  );
+}
