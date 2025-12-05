@@ -1,11 +1,13 @@
 import CommonFooter from "@/src/components/shared/CommonFooter";
 import CommonNavbar from "@/src/components/shared/CommonNavbar";
 
-const CommonLayout = async({ children }: { children: React.ReactNode }) => {
+const CommonLayout = async ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <CommonNavbar />
-      {children}
+      <div className="border-b">
+        <CommonNavbar />
+      </div>
+      <div className="min-h-[80vh]">{children}</div>
       <CommonFooter />
     </>
   );

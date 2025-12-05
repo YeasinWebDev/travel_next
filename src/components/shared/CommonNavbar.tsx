@@ -1,21 +1,29 @@
+"use client"
+
 import { Button } from "../ui/button";
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "../ui/navigation-menu";
 
 import React from "react";
 import Link from "next/link";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import LogoutBtn from "./LogoutBtn";
+import { usePathname } from "next/navigation";
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
   { href: "/", label: "Home", role: "PUBLIC" },
   { href: "/about", label: "About", role: "PUBLIC" },
   { href: "/destinations", label: "Destinations", role: "PUBLIC" },
+  { href: "/trips", label: "Trips", role: "PUBLIC" },
   // { href: "/admin", label: "Dashboard", },
   // { href: "/admin", label: "Dashboard",},
   // { href: "/user", label: "Dashboard", },
 ];
+// const accessToken = await getCookie("accessToken");
 
 export default function Navbar() {
+  const pathname = usePathname()
+  
   return (
     <header>
       <div className="container mx-auto px-4 flex h-16 items-center justify-between gap-4">
@@ -70,13 +78,13 @@ export default function Navbar() {
         </div>
         <div className="flex items-center gap-6">
           {/* Navigation menu */}
-          <NavigationMenu className="">
+          <NavigationMenu className="hidden md:flex!">
             <NavigationMenuList className="gap-2">
               {navigationLinks.map((link, index) => (
                 <React.Fragment key={index}>
                   {link.role === "PUBLIC" && (
                     <NavigationMenuItem>
-                      <NavigationMenuLink asChild className="text-gray-600 hover:text-primary py-1.5 font-medium">
+                      <NavigationMenuLink asChild className={`text-gray-600 hover:text-primary py-1.5 font-medium ${pathname.split("/")[1] === link.label.toLowerCase() ? "text-primary bg-gray-100 font-semibold" : ""}`}>
                         <Link href={link.href}>{link.label}</Link>
                       </NavigationMenuLink>
                     </NavigationMenuItem>
@@ -98,23 +106,14 @@ export default function Navbar() {
         </div>
         {/* Right side */}
         <div className="flex items-center gap-2">
-          <Button asChild className="text-sm">
-            <Link href="/login">Login</Link>
-          </Button>
-          {/* {data?.data?.email && (
-            <Button
-              onClick={handleLogout}
-              variant="outline"
-              className="text-sm"
-            >
-              Logout
-            </Button>
-          )}
-          {!data?.data?.email && (
-            <Button asChild className="text-sm">
-              <Link to="/login">Login</Link>
-            </Button>
+          {/* {accessToken?.value && (
+            <LogoutBtn />
           )} */}
+          {/* {!accessToken?.value && ( */}
+            <Button asChild className="text-sm">
+              <Link href="/login">Login</Link>
+            </Button>
+          {/* )} */}
         </div>
       </div>
     </header>
