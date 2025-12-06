@@ -1,7 +1,27 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+/* app/globals.css or in your layout */
+@import 'leaflet/dist/leaflet.css';
 
 @custom-variant dark (&:is(.dark *));
+
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Fix for Leaflet tiles */
+.leaflet-tile {
+  filter: hue-rotate(15deg) contrast(1.1) saturate(1.1);
+}
+
+/* Fix for attribution */
+.leaflet-control-attribution {
+  font-size: 10px;
+  background: rgba(255, 255, 255, 0.8) !important;
+}
 
 @theme inline {
   --color-background: var(--background);

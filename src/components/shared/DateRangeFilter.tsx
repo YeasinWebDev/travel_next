@@ -14,6 +14,11 @@ export default function DateRangeFilter() {
   const [endDate, setEndDate] = useState(initialEnd);
 
   useEffect(() => {
+    setStartDate(searchParams.get("startDate") || "");
+    setEndDate(searchParams.get("endDate") || "");
+  }, [searchParams]);
+
+  useEffect(() => {
     const params = new URLSearchParams(searchParams.toString());
 
     if (startDate) params.set("startDate", startDate);

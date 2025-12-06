@@ -9,6 +9,13 @@ import { getAllDivisions } from "@/src/services/division/division";
 import { IDestination } from "@/src/types/destination.types";
 import { IDivision } from "@/src/types/division.types";
 
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Destinations - Wayfare",
+  description: "Plan your next trip with Wayfare",
+};
+
 async function DestinationsPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
   const searchParamsObj = await searchParams;
   const querystring = queryStringFormatter(searchParamsObj);

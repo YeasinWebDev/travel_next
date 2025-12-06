@@ -26,8 +26,12 @@ export async function proxy(request: NextRequest) {
     }
   }
 
-  if(accessToken && pathname === "/login"){
+  if (accessToken && pathname === "/login") {
     return NextResponse.redirect(new URL("/", request.url));
+  }
+
+  if (!accessToken && pathname.startsWith("/trips/")) {
+    return NextResponse.redirect(new URL("/login", request.url));
   }
 
   if (pathname.startsWith("/admin")) {
@@ -43,7 +47,6 @@ export async function proxy(request: NextRequest) {
 
   // Public route, allow access
   return NextResponse.next();
-
 }
 
 // See "Matching Paths" below to learn more

@@ -6,8 +6,8 @@ import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuL
 import React from "react";
 import Link from "next/link";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import LogoutBtn from "./LogoutBtn";
 import { usePathname } from "next/navigation";
+import AuthButton from "./AuthButton";
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
@@ -19,10 +19,10 @@ const navigationLinks = [
   // { href: "/admin", label: "Dashboard",},
   // { href: "/user", label: "Dashboard", },
 ];
-// const accessToken = await getCookie("accessToken");
 
 export default function Navbar() {
   const pathname = usePathname()
+
   
   return (
     <header>
@@ -106,14 +106,7 @@ export default function Navbar() {
         </div>
         {/* Right side */}
         <div className="flex items-center gap-2">
-          {/* {accessToken?.value && (
-            <LogoutBtn />
-          )} */}
-          {/* {!accessToken?.value && ( */}
-            <Button asChild className="text-sm">
-              <Link href="/login">Login</Link>
-            </Button>
-          {/* )} */}
+         <AuthButton/>
         </div>
       </div>
     </header>
