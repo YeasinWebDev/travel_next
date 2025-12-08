@@ -8,6 +8,7 @@ import Link from "next/link";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { usePathname } from "next/navigation";
 import AuthButton from "./AuthButton";
+import DashboardBtn from "./DashboardBtn";
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
@@ -67,6 +68,7 @@ export default function Navbar() {
                       </NavigationMenuLink>
                     </NavigationMenuItem>
                   ))}
+                  <DashboardBtn/>
                 </NavigationMenuList>
               </NavigationMenu>
             </PopoverContent>
@@ -101,6 +103,7 @@ export default function Navbar() {
                     )} */}
                 </React.Fragment>
               ))}
+              <DashboardBtn/>
             </NavigationMenuList>
           </NavigationMenu>
         </div>

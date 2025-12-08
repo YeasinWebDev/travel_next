@@ -1,21 +1,28 @@
-// import { getNewAccessToken } from "@/services/auth/auth.service";
-
 import { getCookie } from "../services/auth/tokenHandler";
 
-const serverFetchHelper = async (endpoint: string, options: RequestInit): Promise<Response> => {
-  const { headers, ...rest } = options;
+const serverFetchHelper = async (
+  endpoint: string,
+  options: RequestInit & { next?: { tags?: string[] } } = {}
+): Promise<Response> => {
+  const { headers, next, ...rest } = options;
   const accessToken = await getCookie("accessToken");
 
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${endpoint}`, {
-    headers: {
-      Cookie: accessToken ? `accessToken=${accessToken?.value}` : "",
-      ...headers,
-    },
-    ...rest,
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}${endpoint}`,
+    {
+      headers: {
+        ...headers,
+        Cookie: accessToken ? `accessToken=${accessToken.value}` : "",
+      },
+      ...rest,
+      credentials: "include",
+      next,
+    }
+  );
 
   return response;
 };
+
 
 export const serverFetch ={
     get: (endpoint: string, options: RequestInit={}): Promise<Response> => serverFetchHelper(endpoint, {...options, method: "GET" }),

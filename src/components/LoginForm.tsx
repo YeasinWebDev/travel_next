@@ -16,9 +16,9 @@ function LoginForm() {
     toast.success("Login successful");
     setTimeout(() => {
       if (state.data.user.role === "admin") {
-        window.location.href = "/admin/dashboard";
+        window.location.href = "/admin";
       } else if (state.data.user.role === "user") {
-        window.location.href = "/dashboard";
+        window.location.href = "/user";
       }
     }, 800);
   } else if (!isPending && state?.message) {

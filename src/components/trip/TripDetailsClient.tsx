@@ -20,6 +20,7 @@ import {
   MessageCircle,
   Share2,
   Bookmark,
+  HandCoins,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 // import ImageGallery from './components/ImageGallery';
@@ -33,6 +34,7 @@ import Image from "next/image";
 import ReactLeafletMap from "../MapComponent";
 import ParticipantsList from "./ParticipantsList";
 import TripItinerary from "./TripItinerary";
+import JoinTripModal from "./JoinTripModal";
 
 interface TripDetailsClientProps {
   trip: ITrip;
@@ -171,10 +173,11 @@ const TripDetailsClient: React.FC<TripDetailsClientProps> = ({ trip, currentUser
 
                   <div className="text-center">
                     <div className="flex items-center justify-center gap-2 text-gray-600 mb-2">
-                      <DollarSign className="w-5 h-5" />
+                      {/* <DollarSign className="w-5 h-5" /> */} 
+                      <HandCoins className="w-5 h-5" />
                     </div>
                     <p className="text-sm text-gray-500">Price</p>
-                    <p className="text-lg font-semibold">${trip.destination.price}</p>
+                    <p className="text-lg font-semibold">৳ {trip.destination.price}</p>
                   </div>
                 </div>
               </div>
@@ -315,12 +318,12 @@ const TripDetailsClient: React.FC<TripDetailsClientProps> = ({ trip, currentUser
             <div className="lg:col-span-1">
               <div className="sticky top-24">
                 <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
-                  <h3 className="text-xl font-bold mb-6">Join this trip</h3>
+                  <button disabled={isTripFull} className="text-xl font-bold mb-6" onClick={()=> setIsJoinModalOpen(true)}>Join this trip</button>
 
                   {/* Price */}
                   <div className="mb-6">
                     <div className="flex items-baseline gap-2 mb-2">
-                      <span className="text-3xl font-bold">${trip.destination.price}</span>
+                      <span className="text-3xl font-bold">৳ {trip.destination.price}</span>
                       <span className="text-gray-500">per person</span>
                     </div>
                     <p className="text-gray-600 text-sm">All fees and taxes included</p>
@@ -482,18 +485,12 @@ const TripDetailsClient: React.FC<TripDetailsClientProps> = ({ trip, currentUser
       </div>
 
       {/* Modals */}
-      {/* <JoinTripModal
-        isOpen={isJoinModalOpen}
-        onClose={() => setIsJoinModalOpen(false)}
-        trip={trip}
-        currentUser={currentUser}
+      <JoinTripModal 
+      trip={trip}
+      visible={isJoinModalOpen}
+      onClose={() => setIsJoinModalOpen(false)}
+      remainingSpots={remainingSpots}
       />
-
-      <ContactModal
-        isOpen={isContactModalOpen}
-        onClose={() => setIsContactModalOpen(false)}
-        creator={trip.creator}
-      /> */}
     </>
   );
 };

@@ -33,6 +33,9 @@ export const loginUser = async (_currentState: any, formData: any): Promise<any>
                 "Content-Type": "application/json",
             },
             cache: "no-store",
+            next:{
+        tags:["user"]
+      }
         })
 
         const result = await res.json();

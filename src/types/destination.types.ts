@@ -17,3 +17,33 @@ export interface IDestination {
     lng: number;
   };
 }
+
+export interface Trip {
+  title: string;
+  image: string;
+  startDate: string;
+  endDate: string;
+}
+
+export interface Booking {
+  _id: string;
+  bookingStatus: string;
+  trip: Trip;
+}
+
+interface PaymentGatewayData {
+  brand?: string;
+  last4?: string;
+}
+
+export interface PaymentDetails {
+  _id: string;
+  paymentId: string;
+  amount: number;
+  currency: string;
+  status: string;
+  createdAt: string;
+  totalPeople: number;
+  paymentGatewayData?: PaymentGatewayData;
+  booking: Booking; // <-- THIS WAS MISSING
+}

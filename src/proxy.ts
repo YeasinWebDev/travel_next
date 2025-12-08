@@ -40,7 +40,7 @@ export async function proxy(request: NextRequest) {
   }
 
   // User route protection
-  if (pathname.startsWith("/dashboard")) {
+  if (pathname.startsWith("/user")) {
     if (userRole === IUserRole.USER) return NextResponse.next();
     return NextResponse.redirect(new URL("/", request.url));
   }

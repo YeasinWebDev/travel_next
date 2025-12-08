@@ -31,4 +31,7 @@ export interface IUser {
   role: "admin" | "user";
   travelInterests?: string[];
   location?: string;
+  status?: "active" | "inactive";
+  createdAt?: string;
+  updatedAt?: string;
 }
