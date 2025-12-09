@@ -5,7 +5,7 @@ export interface IDestination {
   description: string;
   image: string[];
   interests: string[];
-  division: string;
+  division: any;
   price: number;
   bestTimeToVisit: string;
   activities: string[];

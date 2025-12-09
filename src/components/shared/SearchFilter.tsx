@@ -17,8 +17,14 @@ function SearchFilter({ placeholder = "Search...", paramName = "searchTerm" }: S
   const [isPending, startTransition] = useTransition();
   const [value, setValue] = useState(searchParams.get(paramName) || "");
   const debouncedValue = useDebounce(value, 1000);
+  const params = new URLSearchParams(searchParams.toString());
+
   useEffect(() => {
-    const params = new URLSearchParams(searchParams.toString());
+    const current = searchParams.get(paramName) || "";
+    setValue(current);
+  }, [searchParams, paramName]);
+
+  useEffect(() => {
     const initialValue = searchParams.get(paramName) || "";
     if (initialValue === debouncedValue) return;
 
@@ -27,13 +33,14 @@ function SearchFilter({ placeholder = "Search...", paramName = "searchTerm" }: S
       params.set("page", "1");
     } else {
       params.delete(paramName);
-      params.delete("page"); 
+      params.delete("page");
     }
 
     startTransition(() => {
       router.push(`?${params.toString()}`);
-    })
+    });
   }, [debouncedValue]);
+
   return (
     <div className="relative">
       <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />

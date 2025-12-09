@@ -14,7 +14,7 @@ export const getUser = async () => {
       headers: {
         authorization: `${accessToken?.value}`,
       },
-      cache:"force-cache",
+      cache:"no-cache",
       next:{
         tags:["user"]
       }

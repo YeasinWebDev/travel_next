@@ -26,7 +26,7 @@ function Pagination({ currentPage, totalPages }: TablePaginationProps) {
 
   return (
     <div className="flex items-center justify-center gap-2 flex-col">
-      <div className="flex items-center justify-center gap-2 flex-col md:flex-row">
+      <div className="flex items-center justify-center gap-2 flex-col lg:flex-row">
       <Button variant="outline" size="sm" onClick={() => navigateToPage(currentPage - 1)} disabled={currentPage <= 1 || isPending}>
         <ChevronLeft className="h-4 w-4 mr-1" />
         Previous

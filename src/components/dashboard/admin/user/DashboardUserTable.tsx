@@ -103,7 +103,7 @@ function DashboardUserTable({ users }: DashboardUserTableProps) {
   };
 
   return (
-    <div className={`${state === "collapsed" ? "w-full" : "md:w-[calc(100%-240px)] lg:w-full"} mt-5`}>
+    <div className={`${state === "collapsed" ? "w-full" : "md:w-[calc(100%-240px)] lg:w-full"} mt-5 border rounded-md`}>
       <div>
         <Table>
           <TableHeader>
