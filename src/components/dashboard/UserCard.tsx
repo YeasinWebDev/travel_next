@@ -7,6 +7,7 @@ import { LogOut } from "lucide-react";
 import { logoutUser } from "@/src/services/auth/logoutUser";
 
 function UserCard({ userInfo }: { userInfo: IUser }) {
+  console.log(userInfo)
   return (
     <div className="flex items-center gap-3 p-2 bg-gray-50/50 rounded-lg border border-gray-200">
       {/* Avatar */}

@@ -5,7 +5,6 @@ import { serverFetch } from "@/src/lib/server-fetch";
 import { ZodValidation } from "@/src/lib/zodValidation";
 import z from "zod";
 
-
 const registerValidationZodSchema = z
   .object({
     name: z.string().min(1, { message: "Name is required" }),
@@ -28,7 +27,6 @@ const registerValidationZodSchema = z
     error: "Passwords do not match",
     path: ["confirmPassword"],
   });
-
 
 export const getAll = async (queryString: string) => {
   try {
@@ -76,7 +74,6 @@ export const createAdmin = async (_currentState: any, formData: any): Promise<an
       confirmPassword: formData.get("confirmPassword"),
     };
 
-
     if (ZodValidation(validationData, registerValidationZodSchema).success === false) {
       return ZodValidation(validationData, registerValidationZodSchema);
     }
@@ -89,7 +86,7 @@ export const createAdmin = async (_currentState: any, formData: any): Promise<an
 
     const newFormData = new FormData();
 
-    newFormData.append("data", JSON.stringify({...validatedFields, role: "admin"}));
+    newFormData.append("data", JSON.stringify({ ...validatedFields, role: "admin" }));
     if (validatedFields.profileImage) {
       newFormData.append("image", formData.get("image") as Blob);
     }
@@ -109,12 +106,34 @@ export const createAdmin = async (_currentState: any, formData: any): Promise<an
   }
 };
 
-
 export const deleteUser = async (email: string) => {
   try {
     const res = await serverFetch.delete(`/user/${email}`, { next: { tags: ["user"] } });
     revalidateTag("user", "default");
     const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+    return {
+      success: false,
+      data: [],
+      message: error,
+    };
+  }
+};
+
+export const updateUser = async (email: string, formData: any) => {
+  try {
+    const res = await serverFetch.patch(`/user/${email}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    revalidateTag("user", "default");
+
+    const data = await res.json();
+
     return data;
   } catch (error) {
     console.log(error);
