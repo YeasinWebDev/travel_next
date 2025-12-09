@@ -3,7 +3,7 @@
 import { useSearchParams, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 
-export default function DateRangeFilter() {
+export default function DateRangeFilter({route='/trips'}:{route?:string}) {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -27,11 +27,11 @@ export default function DateRangeFilter() {
     if (endDate) params.set("endDate", endDate);
     else params.delete("endDate");
 
-    router.push(`/trips?${params.toString()}`);
+    router.push(`${route}?${params.toString()}`);
   }, [startDate, endDate]);
 
   return (
-    <div className="flex items-center justify-center gap-3 flex-wrap">
+    <div className="flex gap-3 flex-wrap">
       <div className="flex items-center gap-5">
         <label className="text-sm text-gray-600">Start Date</label>
         <input
