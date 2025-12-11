@@ -22,7 +22,7 @@ function Pagination({ currentPage, totalPages }: TablePaginationProps) {
     });
   };
 
-  if (totalPages <= 1) return null;
+  // if (totalPages <= 1) return null;
 
   return (
     <div className="flex items-center justify-center gap-2 flex-col">

@@ -5,14 +5,18 @@ import Image from "next/image";
 import { Button } from "../ui/button";
 import { LogOut } from "lucide-react";
 import { logoutUser } from "@/src/services/auth/logoutUser";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 function UserCard({ userInfo }: { userInfo: IUser }) {
-  console.log(userInfo)
+  
   return (
     <div className="flex items-center gap-3 p-2 bg-gray-50/50 rounded-lg border border-gray-200">
       {/* Avatar */}
       <div className="relative flex-shrink-0">
-        <Image alt="profileImage" src={userInfo.profileImage} width={40} height={40} className="rounded-full object-cover border-2 border-white" />
+        <Avatar className="h-10 w-10 border-4 border-background">
+          <AvatarImage src={userInfo.profileImage || ""} alt={userInfo.name} />
+          <AvatarFallback className="text-sm bg-primary/10">{userInfo.name.substring(0, 2).toUpperCase()}</AvatarFallback>
+        </Avatar>
         {/* Online indicator */}
         <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></div>
       </div>

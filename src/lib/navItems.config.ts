@@ -34,6 +34,16 @@ export const getNavItemsByRole = (role: string) => {
             title: "Dashboard",
             url: "/user",
             icon: "LayoutDashboard" 
+        },
+        {
+            title: "Trips",
+            url: "/user/trips",
+            icon: "TentTree"
+        },
+         {
+            title:"Profile",
+            url:"/profile",
+            icon:"User"
         }
     ];
 

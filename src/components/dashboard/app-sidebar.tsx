@@ -26,28 +26,6 @@ export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sideb
       <SidebarContent>
         <SidebarGroup>
           <SidebarMenu>
-            {/* {data.navMain.map((item) => (
-              <></>
-              // <SidebarMenuItem key={item.title}>
-              //   <SidebarMenuButton asChild>
-              //     <a href={item.url} className="font-medium">
-              //       {item.title}
-              //     </a>
-              //   </SidebarMenuButton>
-              //   {item.items?.length ? (
-              //     <SidebarMenuSub>
-              //       {item.items.map((item) => (
-              //         <SidebarMenuSubItem key={item.title}>
-              //           <SidebarMenuSubButton asChild isActive={item.isActive}>
-              //             <a href={item.url}>{item.title}</a>
-              //           </SidebarMenuSubButton>
-              //         </SidebarMenuSubItem>
-              //       ))}
-              //     </SidebarMenuSub>
-              //   ) : null}
-              // </SidebarMenuItem>
-            ))} */}
-
             <DashboardSideBarContent user={userInfo} navLinks={navItems} />
           </SidebarMenu>
         </SidebarGroup>

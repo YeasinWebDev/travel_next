@@ -19,6 +19,8 @@ export interface ITrip extends Document {
   participants?: IPrecipitants[];
   isFull?: boolean;
   status?: "active" | "completed" | "cancelled";
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 

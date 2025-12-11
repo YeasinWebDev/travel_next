@@ -20,6 +20,7 @@ export const getUser = async () => {
       }
     });
 
+
     const data = await user.json();
 
     return data?.data;

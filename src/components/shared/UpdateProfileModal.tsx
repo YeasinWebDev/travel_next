@@ -13,6 +13,7 @@ import { toast } from "react-hot-toast";
 import { IUser } from "@/src/types/trips.types";
 import { uploadImages } from "@/src/services/destination/destination";
 import { updateUser } from "@/src/services/auth/user";
+import { useRouter } from "next/navigation";
 
 interface UpdateProfileModalProps {
   open: boolean;
@@ -56,6 +57,8 @@ export default function UpdateProfileModal({ open, onOpenChange, user, reload, s
   });
   const [isLoading, setIsLoading] = useState(false);
   const [newInterest, setNewInterest] = useState("");
+  const [uploading, setUploading] = useState(false);
+  const router = useRouter()
 
   // Initialize form data when user changes
   useEffect(() => {
@@ -105,20 +108,32 @@ export default function UpdateProfileModal({ open, onOpenChange, user, reload, s
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    const formData = new FormData();
+    setUploading(true);
+    try {
+      const formData = new FormData();
 
-    // Add image files
-    formData.append("images", file);
+      // Add image files
+      formData.append("images", file);
 
-    // Upload images if any
-    const res = await uploadImages(formData);
-    const newUploadedImages = res || [];
-    console.log(res);
+      // Upload images if any
+      const res = await uploadImages(formData);
+    
+      if(res.success === false) {
+        onOpenChange(false);
+        return toast.error(res.message)
+      }
+      const newUploadedImages = res?.data || [];
 
-    setFormData((prev) => ({
-      ...prev,
-      profileImage: newUploadedImages[0],
-    }));
+      setFormData((prev) => ({
+        ...prev,
+        profileImage: newUploadedImages[0],
+      }));
+    } catch (error) {
+      console.log(error);
+      toast.error("An error occurred while uploading images");
+    } finally {
+      setUploading(false);
+    }
   };
 
   const handleSubmit = async () => {
@@ -135,6 +150,7 @@ export default function UpdateProfileModal({ open, onOpenChange, user, reload, s
       if (response.success) {
         toast.success("Profile updated successfully!");
         setReload && setReload(!reload);
+        router.refresh();
         onOpenChange(false);
       } else {
         toast.error("Failed to update profile");
@@ -171,7 +187,7 @@ export default function UpdateProfileModal({ open, onOpenChange, user, reload, s
                 <input id="profile-image" type="file" accept="image/*" className="hidden" onChange={handleImageUpload} disabled={isLoading} />
               </label>
             </div>
-            <p className="text-sm text-muted-foreground">Click the camera icon to upload a new profile image</p>
+            <p className="text-sm text-muted-foreground">{uploading ? " uploading..." : "Click the camera icon to upload a new profile image"}</p>
           </div>
 
           {/* Basic Information */}
@@ -197,29 +213,6 @@ export default function UpdateProfileModal({ open, onOpenChange, user, reload, s
                 placeholder="Enter your location"
                 disabled={isLoading}
               />
-            </div>
-
-            <div className="space-y-2">
-              <Label>Account Status</Label>
-              <Select value={formData.status} onValueChange={(value: "active" | "inactive") => handleInputChange("status", value)} disabled={isLoading}>
-                <SelectTrigger>
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="active">
-                    <div className="flex items-center gap-2">
-                      <div className="h-2 w-2 rounded-full bg-green-500" />
-                      Active
-                    </div>
-                  </SelectItem>
-                  <SelectItem value="inactive">
-                    <div className="flex items-center gap-2">
-                      <div className="h-2 w-2 rounded-full bg-gray-400" />
-                      Inactive
-                    </div>
-                  </SelectItem>
-                </SelectContent>
-              </Select>
             </div>
           </div>
 

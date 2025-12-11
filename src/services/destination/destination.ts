@@ -112,8 +112,8 @@ export const uploadImages =  async (images:FormData) =>{
       body: images,
     })
     const data = await res.json();
-    console.log(data?.data)
-    return data?.data
+    console.log(data)
+    return data
   } catch (error) {
     console.log(error)
     return {

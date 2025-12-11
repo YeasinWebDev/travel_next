@@ -44,7 +44,7 @@ export default function DestinationDetailPage({ destination }: { destination: ID
         resetForm();
         setDialog(false);
         if (res?.data) {
-          router.push(`/trip/${res.data._id}`);
+          router.push(`/trips/${res.data._id}`);
         }
       }
     } catch (error: any) {

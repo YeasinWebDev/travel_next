@@ -34,7 +34,7 @@ export default function ProfilePage() {
 
   if (loading) {
     return (
-      <div className="h-full w-full flex items-center justify-center h-screen">
+      <div className="w-full flex items-center justify-center h-screen">
         <Spinner className="size-20" color="black" />
       </div>
     );
