@@ -1,16 +1,16 @@
 "use client";
 
-import DashboardDestinationHeader from "@/src/components/dashboard/admin/destination/DashboardDestinationHeader";
-import DashboardDestinationTable from "@/src/components/dashboard/admin/destination/DashboardDestinationTable";
-import ClearFilters from "@/src/components/shared/ClearFilters";
-import Pagination from "@/src/components/shared/Pagination";
-import SearchFilter from "@/src/components/shared/SearchFilter";
-import SelectFilter from "@/src/components/shared/SelectFilter";
-import { Spinner } from "@/src/components/ui/spinner";
-import { queryStringFormatter } from "@/src/lib/formater";
-import { getAllDestinations } from "@/src/services/destination/destination";
-import { getAllDivisions } from "@/src/services/division/division";
-import { IDivision } from "@/src/types/division.types";
+import DashboardDestinationHeader from "@/src/app/components/dashboard/admin/destination/DashboardDestinationHeader";
+import DashboardDestinationTable from "@/src/app/components/dashboard/admin/destination/DashboardDestinationTable";
+import ClearFilters from "@/src/app/components/shared/ClearFilters";
+import Pagination from "@/src/app/components/shared/Pagination";
+import SearchFilter from "@/src/app/components/shared/SearchFilter";
+import SelectFilter from "@/src/app/components/shared/SelectFilter";
+import { Spinner } from "@/src/app/components/ui/spinner";
+import { queryStringFormatter } from "@/src/app/lib/formater";
+import { getAllDestinations } from "@/src/app/services/destination/destination";
+import { getAllDivisions } from "@/src/app/services/division/division";
+import { IDivision } from "@/src/app/types/division.types";
 import { useEffect, useState } from "react";
 
 export default function DashboardDestinationPage({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {

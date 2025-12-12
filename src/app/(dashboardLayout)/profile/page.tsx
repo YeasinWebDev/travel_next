@@ -1,18 +1,18 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "../../../components/ui/avatar";
-import { Button } from "../../../components/ui/button";
-import { Badge } from "../../../components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "../../components/ui/avatar";
+import { Button } from "../../components/ui/button";
+import { Badge } from "../../components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../components/ui/tabs";
 import { User, Mail, MapPin, Edit, Calendar, Shield, Activity, Globe, Briefcase, Heart } from "lucide-react";
 import { format } from "date-fns";
-import { IUser } from "@/src/types/trips.types";
-import { IUserRole } from "@/src/proxy";
-import { getUser } from "@/src/services/auth/getme";
-import { Spinner } from "@/src/components/ui/spinner";
-import UpdateProfileModal from "@/src/components/shared/UpdateProfileModal";
+import { IUser } from "@/src/app/types/trips.types";
+import { Spinner } from "@/src/app/components/ui/spinner";
+import UpdateProfileModal from "@/src/app/components/shared/UpdateProfileModal";
+import { getUser } from "../../services/auth/getme";
+import { IUserRole } from "../../proxy";
 
 export default function ProfilePage() {
   const [user, setUser] = useState<IUser | null>(null);

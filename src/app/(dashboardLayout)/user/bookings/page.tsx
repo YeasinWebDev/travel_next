@@ -1,10 +1,10 @@
-import UserBookingHeader from "@/src/components/dashboard/user/bookings/UserBookingHeader";
-import UserBookingTable from "@/src/components/dashboard/user/bookings/UserBookingTable";
-import ClearFilters from "@/src/components/shared/ClearFilters";
-import Pagination from "@/src/components/shared/Pagination";
-import SelectFilter from "@/src/components/shared/SelectFilter";
-import { queryStringFormatter } from "@/src/lib/formater";
-import { myBookings } from "@/src/services/auth/user";
+import UserBookingHeader from "@/src/app/components/dashboard/user/bookings/UserBookingHeader";
+import UserBookingTable from "@/src/app/components/dashboard/user/bookings/UserBookingTable";
+import ClearFilters from "@/src/app/components/shared/ClearFilters";
+import Pagination from "@/src/app/components/shared/Pagination";
+import SelectFilter from "@/src/app/components/shared/SelectFilter";
+import { queryStringFormatter } from "@/src/app/lib/formater";
+import { myBookings } from "@/src/app/services/auth/user";
 
 async function UserDashboardBookingsPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
   const searchParamsObj = await searchParams;

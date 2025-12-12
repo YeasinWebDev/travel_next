@@ -1,10 +1,10 @@
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../components/ui/card"
-import { Tabs, TabsContent} from "../../../components/ui/tabs"
-import { StatsCards } from "@/src/components/dashboard/admin/dashboard/stats-cards"
-import { RevenueChart } from "@/src/components/dashboard/admin/dashboard/revenue-chart"
-import { TopUsers } from "@/src/components/dashboard/admin/dashboard/top-users"
-import { getAllStats } from "@/src/services/stats/stats"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../components/ui/card"
+import { Tabs, TabsContent} from "../../components/ui/tabs"
+import { StatsCards } from "@/src/app/components/dashboard/admin/dashboard/stats-cards"
+import { RevenueChart } from "@/src/app/components/dashboard/admin/dashboard/revenue-chart"
+import { TopUsers } from "@/src/app/components/dashboard/admin/dashboard/top-users"
+import { getAllStats } from "../../services/stats/stats"
 
 
 export default async function DashboardPage() {

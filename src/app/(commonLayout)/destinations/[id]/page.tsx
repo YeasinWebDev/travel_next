@@ -1,5 +1,5 @@
-import DestinationDetailPage from '@/src/components/destination/DestinationDetailPage';
-import { getDestinationById } from '@/src/services/destination/destination';
+import DestinationDetailPage from '@/src/app/components/destination/DestinationDetailPage';
+import { getDestinationById } from '@/src/app/services/destination/destination';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 

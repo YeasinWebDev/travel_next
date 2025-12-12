@@ -1,11 +1,11 @@
-import ClearFilters from "@/src/components/shared/ClearFilters";
-import DateRangeFilter from "@/src/components/shared/DateRangeFilter";
-import Pagination from "@/src/components/shared/Pagination";
-import SearchFilter from "@/src/components/shared/SearchFilter";
-import TripCard from "@/src/components/trip/TripCard";
-import { queryStringFormatter } from "@/src/lib/formater";
-import { getAllTrips } from "@/src/services/trips/trips";
-import { ITrip } from "@/src/types/trips.types";
+import ClearFilters from "@/src/app/components/shared/ClearFilters";
+import DateRangeFilter from "@/src/app/components/shared/DateRangeFilter";
+import Pagination from "@/src/app/components/shared/Pagination";
+import SearchFilter from "@/src/app/components/shared/SearchFilter";
+import TripCard from "@/src/app/components/trip/TripCard";
+import { queryStringFormatter } from "@/src/app/lib/formater";
+import { ITrip } from "@/src/app/types/trips.types";
+import { getAllTrips } from "../../services/trips/trips";
 
 export const metadata = {
   title: "Trips - Wayfare",

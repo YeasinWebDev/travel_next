@@ -1,9 +1,9 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { getTripById } from '@/src/services/trips/trips';
-import { getUser } from '@/src/services/auth/getme';
-import TripDetailsClient from '@/src/components/trip/TripDetailsClient';
-import { IPrecipitants } from '@/src/types/trips.types';
+import TripDetailsClient from '@/src/app/components/trip/TripDetailsClient';
+import { IPrecipitants } from '@/src/app/types/trips.types';
+import { getTripById } from '@/src/app/services/trips/trips';
+import { getUser } from '@/src/app/services/auth/getme';
 
 // Generate metadata for the page
 export async function generateMetadata({

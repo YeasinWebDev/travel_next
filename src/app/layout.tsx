@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
-import LenisWrapper from "../components/shared/LenisWrapper";
+import LenisWrapper from "./components/shared/LenisWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

@@ -1,5 +1,5 @@
-import AnalyticsPage from '@/src/components/dashboard/user/Analytics'
-import { getAllStatsForUser } from '@/src/services/stats/stats'
+import AnalyticsPage from '@/src/app/components/dashboard/user/Analytics'
+import { getAllStatsForUser } from '../../services/stats/stats'
 
 async function page() {
   const data = await getAllStatsForUser()

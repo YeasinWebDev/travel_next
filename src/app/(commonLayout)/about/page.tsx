@@ -1,6 +1,6 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../components/ui/card";
-import { Button } from "../../../components/ui/button";
-import { Separator } from "../../../components/ui/separator";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../components/ui/card";
+import { Button } from "../../components/ui/button";
+import { Separator } from "../../components/ui/separator";
 import { Users, MapPin, CreditCard, Mail, Shield, Globe, CheckCircle } from "lucide-react";
 import Link from "next/link";
 

@@ -1,11 +1,11 @@
 
-import DashboardDivisionTable from "@/src/components/dashboard/admin/division/DashboardDivisionTable";
-import DashboardDivisionHeader from "@/src/components/dashboard/admin/division/DashbordDivisionHeader";
-import ClearFilters from "@/src/components/shared/ClearFilters";
-import Pagination from "@/src/components/shared/Pagination";
-import SearchFilter from "@/src/components/shared/SearchFilter";
-import { queryStringFormatter } from "@/src/lib/formater";
-import { getAllDivisions } from "@/src/services/division/division";
+import DashboardDivisionTable from "@/src/app/components/dashboard/admin/division/DashboardDivisionTable";
+import DashboardDivisionHeader from "@/src/app/components/dashboard/admin/division/DashbordDivisionHeader";
+import ClearFilters from "@/src/app/components/shared/ClearFilters";
+import Pagination from "@/src/app/components/shared/Pagination";
+import SearchFilter from "@/src/app/components/shared/SearchFilter";
+import { queryStringFormatter } from "@/src/app/lib/formater";
+import { getAllDivisions } from "@/src/app/services/division/division";
 
 async function DashboardDivisionPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
   const searchParamsObj = await searchParams;

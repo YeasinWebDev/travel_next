@@ -2,14 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../components/ui/card";
-import { Button } from "../../components/ui/button";
-import { Separator } from "../../components/ui/separator";
-import { Badge } from "../../components/ui/badge";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../components/ui/card";
+import { Button } from "../components/ui/button";
+import { Separator } from "../components/ui/separator";
+import { Badge } from "../components/ui/badge";
 import { CheckCircle2, Download, Mail, Home, Clock, Shield, Users, Calendar, MapPin, CreditCard } from "lucide-react";
 import Link from "next/link";
-import { getPaymentdetails } from "@/src/services/payment/payment";
-import { Booking, PaymentDetails } from "@/src/types/destination.types";
+import { Booking, PaymentDetails } from "@/src/app/types/destination.types";
+import { getPaymentdetails } from "../services/payment/payment";
 
 export default function PaymentSuccessPage() {
   const searchParams = useSearchParams();

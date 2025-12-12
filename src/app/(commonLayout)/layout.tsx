@@ -1,5 +1,5 @@
-import CommonFooter from "@/src/components/shared/CommonFooter";
-import CommonNavbar from "@/src/components/shared/CommonNavbar";
+import CommonFooter from "@/src/app/components/shared/CommonFooter";
+import CommonNavbar from "@/src/app/components/shared/CommonNavbar";
 
 const CommonLayout = async ({ children }: { children: React.ReactNode }) => {
   return (

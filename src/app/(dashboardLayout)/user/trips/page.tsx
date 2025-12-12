@@ -1,11 +1,11 @@
-import DashboardTripsFilter from "@/src/components/dashboard/admin/trips/DashboardTripsFilter";
-import UserTripsHeader from "@/src/components/dashboard/user/trips/UserTripsHeader";
-import { TripTable } from "@/src/components/dashboard/user/trips/UserTripTable";
-import Pagination from "@/src/components/shared/Pagination";
-import { queryStringFormatter } from "@/src/lib/formater";
-import { getAllDestinations } from "@/src/services/destination/destination";
-import {myTrips } from "@/src/services/trips/trips";
-import { IDestination } from "@/src/types/destination.types";
+import DashboardTripsFilter from "@/src/app/components/dashboard/admin/trips/DashboardTripsFilter";
+import UserTripsHeader from "@/src/app/components/dashboard/user/trips/UserTripsHeader";
+import { TripTable } from "@/src/app/components/dashboard/user/trips/UserTripTable";
+import Pagination from "@/src/app/components/shared/Pagination";
+import { queryStringFormatter } from "@/src/app/lib/formater";
+import { getAllDestinations } from "@/src/app/services/destination/destination";
+import { myTrips } from "@/src/app/services/trips/trips";
+import { IDestination } from "@/src/app/types/destination.types";
 
 async function UserTripsPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
   const searchParamsObj = await searchParams;

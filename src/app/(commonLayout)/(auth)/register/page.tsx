@@ -1,4 +1,4 @@
-import RegisterForm from "@/src/components/RegisterForm";
+import RegisterForm from "@/src/app/components/RegisterForm";
 
 
 export const metadata = {
