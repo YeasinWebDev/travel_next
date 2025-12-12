@@ -20,10 +20,10 @@ export async function proxy(request: NextRequest) {
       userRole = decodedToken.role as IUserRole;
     } catch (error) {
       console.log(error);
-      NextResponse.redirect(new URL("/login", request.url));
-      await removeCookie("accessToken");
-      await removeCookie("refreshToken");
-      return 
+      const response = NextResponse.redirect(new URL("/login", request.url));
+      response.cookies.delete("accessToken");
+      response.cookies.delete("refreshToken");
+      return response;
     }
   }
 

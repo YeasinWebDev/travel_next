@@ -34,7 +34,7 @@ export default function GlobalError({ error, reset }: { error: Error & { digest?
             Try again
           </button>
           <br />
-          <Button>
+          <Button className="mt-5">
             <Link href="/">Return Home</Link>
           </Button>
         </div>
