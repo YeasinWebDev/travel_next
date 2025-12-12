@@ -61,6 +61,8 @@ cd travel_next
 npm install
 ```
 
+### 3.Environment Variables
+
 ```bash
 NEXT_PUBLIC_API_URL=
 JWT_SECRET=
