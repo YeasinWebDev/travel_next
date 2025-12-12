@@ -18,6 +18,11 @@ export const getNavItemsByRole = (role: string) => {
             icon: "MapPinCheckInside"
         },
         {
+            title:"Division",
+            url:"/admin/division",
+            icon: "LocateFixed"
+        },
+        {
             title: "Trips",
             url: "/admin/trips",
             icon: "TentTree"

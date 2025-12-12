@@ -56,7 +56,7 @@ async function DestinationsPage({ searchParams }: { searchParams: Promise<{ [key
           ))}
         </div>
       ) : (
-        <p className="text-center text-gray-600 mt-10">No destinations found</p>
+        <p className="text-center text-gray-600 my-10">No destinations found</p>
       )}
 
       <Pagination currentPage={allDestinations?.data?.meta?.page} totalPages={allDestinations?.data?.meta?.totalPages} />

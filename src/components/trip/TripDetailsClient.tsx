@@ -1,33 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import {
-  Calendar,
-  MapPin,
-  Users,
-  User,
-  DollarSign,
-  CheckCircle,
-  XCircle,
-  Clock,
-  Shield,
-  CreditCard,
-  Mail,
-  Phone,
-  ArrowLeft,
-  ChevronRight,
-  Star,
-  MessageCircle,
-  Share2,
-  Bookmark,
-  HandCoins,
-} from "lucide-react";
+import { Calendar, MapPin, Users, CheckCircle, XCircle, Clock, Shield, CreditCard, Mail, ArrowLeft, HandCoins } from "lucide-react";
 import { useRouter } from "next/navigation";
-// import ImageGallery from './components/ImageGallery';
-// import TripItinerary from './components/TripItinerary';
-// import ParticipantsList from './components/ParticipantsList';
-// import JoinTripModal from './components/JoinTripModal';
-// import ContactModal from './components/ContactModal';
 import Link from "next/link";
 import { ITrip, IUser } from "@/src/types/trips.types";
 import Image from "next/image";
@@ -98,7 +73,14 @@ const TripDetailsClient: React.FC<TripDetailsClientProps> = ({ trip, currentUser
 
         {/* Hero Section with Image Gallery */}
         <div className="relative">
-          <Image src={trip.image || trip.destination.image[1] || trip.destination.image[0]} alt={trip.title} width={0} height={0} sizes="100vw" className="w-full h-68 object-cover" />
+          <Image
+            src={trip.image || trip.destination.image[1] || trip.destination.image[0]}
+            alt={trip.title}
+            width={0}
+            height={0}
+            sizes="100vw"
+            className="w-full h-68 object-cover"
+          />
         </div>
 
         {/* Main Content */}
@@ -123,9 +105,7 @@ const TripDetailsClient: React.FC<TripDetailsClientProps> = ({ trip, currentUser
 
                     <div className="flex items-center gap-2 text-gray-600">
                       <MapPin className="w-5 h-5" />
-                      <span>
-                        {trip.destination.location}
-                      </span>
+                      <span>{trip.destination.location}</span>
                     </div>
                   </div>
 
@@ -173,7 +153,6 @@ const TripDetailsClient: React.FC<TripDetailsClientProps> = ({ trip, currentUser
 
                   <div className="text-center">
                     <div className="flex items-center justify-center gap-2 text-gray-600 mb-2">
-                      {/* <DollarSign className="w-5 h-5" /> */} 
                       <HandCoins className="w-5 h-5" />
                     </div>
                     <p className="text-sm text-gray-500">Price</p>
@@ -252,22 +231,9 @@ const TripDetailsClient: React.FC<TripDetailsClientProps> = ({ trip, currentUser
                     </div>
                   )}
 
-                  {activeTab === 'itinerary' && (
-                    <TripItinerary
-                      duration={getTripDuration()}
-                      startDate={trip.startDate}
-                      endDate={trip.endDate}
-                      destination={trip.destination}
-                    />
-                  )}
+                  {activeTab === "itinerary" && <TripItinerary duration={getTripDuration()} startDate={trip.startDate} endDate={trip.endDate} destination={trip.destination} />}
 
-                  {activeTab === 'participants' && (
-                    <ParticipantsList
-                      participants={trip.participants || []}
-                      creator={trip.creator}
-                      currentUser={currentUser}
-                    />
-                  )}
+                  {activeTab === "participants" && <ParticipantsList participants={trip.participants || []} creator={trip.creator} currentUser={currentUser} />}
 
                   {activeTab === "location" && (
                     <div className="space-y-6">
@@ -304,7 +270,12 @@ const TripDetailsClient: React.FC<TripDetailsClientProps> = ({ trip, currentUser
                             </div>
                           </div>
                           <div className="h-96 rounded-lg overflow-hidden">
-                            <ReactLeafletMap lat={trip.destination?.coordinates?.lat || 0} lng={trip.destination?.coordinates?.lng || 0} name={trip.destination?.name} height="100%" />
+                            <ReactLeafletMap
+                              lat={trip.destination?.coordinates?.lat || 0}
+                              lng={trip.destination?.coordinates?.lng || 0}
+                              name={trip.destination?.name}
+                              height="100%"
+                            />
                           </div>
                         </div>
                       </div>
@@ -318,12 +289,17 @@ const TripDetailsClient: React.FC<TripDetailsClientProps> = ({ trip, currentUser
             <div className="lg:col-span-1">
               <div className="sticky top-24">
                 <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
-                  <button disabled={isTripFull} className="text-xl font-bold mb-6" onClick={()=> setIsJoinModalOpen(true)}>Join this trip</button>
+                  <button disabled={isTripFull} className="text-xl font-bold mb-6" onClick={() => setIsJoinModalOpen(true)}>
+                    Join this trip
+                  </button>
 
                   {/* Price */}
                   <div className="mb-6">
                     <div className="flex items-baseline gap-2 mb-2">
-                      <span className="text-3xl font-bold"> {trip.destination.price} <span className="text-sm">bdt</span></span>
+                      <span className="text-3xl font-bold">
+                        {" "}
+                        {trip.destination.price} <span className="text-sm">bdt</span>
+                      </span>
                       <span className="text-gray-500">per person</span>
                     </div>
                     <p className="text-gray-600 text-sm">All fees and taxes included</p>
@@ -485,12 +461,7 @@ const TripDetailsClient: React.FC<TripDetailsClientProps> = ({ trip, currentUser
       </div>
 
       {/* Modals */}
-      <JoinTripModal 
-      trip={trip}
-      visible={isJoinModalOpen}
-      onClose={() => setIsJoinModalOpen(false)}
-      remainingSpots={remainingSpots}
-      />
+      <JoinTripModal trip={trip} visible={isJoinModalOpen} onClose={() => setIsJoinModalOpen(false)} remainingSpots={remainingSpots} />
     </>
   );
 };
