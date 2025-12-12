@@ -1,3 +1,5 @@
+"use client";
+
 import { DashboardHeader } from "../../DashboadHeader";
 
 function UserBookingHeader() {

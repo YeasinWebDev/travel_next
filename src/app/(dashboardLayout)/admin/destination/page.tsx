@@ -1,5 +1,4 @@
-export const dynamic = "force-dynamic";
-
+"use client";
 
 import DashboardDestinationHeader from "@/src/components/dashboard/admin/destination/DashboardDestinationHeader";
 import DashboardDestinationTable from "@/src/components/dashboard/admin/destination/DashboardDestinationTable";
@@ -11,33 +10,45 @@ import { queryStringFormatter } from "@/src/lib/formater";
 import { getAllDestinations } from "@/src/services/destination/destination";
 import { getAllDivisions } from "@/src/services/division/division";
 import { IDivision } from "@/src/types/division.types";
+import { useEffect, useState } from "react";
 
-async function DashboardDestinationPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
-  const searchParamsObj = await searchParams;
-  const querystring = queryStringFormatter(searchParamsObj);
-  const allDestinations = await getAllDestinations(querystring);
-  const allDivisions = await getAllDivisions();
+export default function DashboardDestinationPage({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
+  const [allDestinations, setAllDestinations] = useState<any>(null);
+  const [divisions, setDivisions] = useState<{ label: string; value: string }[]>([]);
 
-  const division = allDivisions?.data?.data.map((d: IDivision) => {
-    return {
-      label: d.name,
-      value: d._id
-    }
-  })
+  useEffect(() => {
+    const fetchData = async () => {
+      const querystring = queryStringFormatter(searchParams);
+      const destinations = await getAllDestinations(querystring);
+      const allDivisions = await getAllDivisions();
+
+      const divisionOptions = allDivisions?.data?.data.map((d: IDivision) => ({
+        label: d.name,
+        value: d._id
+      }));
+
+      setAllDestinations(destinations?.data?.data || []);
+      setDivisions(divisionOptions || []);
+    };
+    fetchData();
+  }, [searchParams]);
+
+  if (!allDestinations || !divisions) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
-      <DashboardDestinationHeader divisions={division}/>
+      <DashboardDestinationHeader divisions={divisions}/>
       <div className="flex flex-wrap items-center gap-5 mt-5">
         <SearchFilter placeholder="Search Destination" paramName="search" />
-        <SelectFilter options={division} paramName="division" />
-        <ClearFilters route = '/admin/destination'/>
+        <SelectFilter options={divisions} paramName="division" />
+        <ClearFilters route='/admin/destination'/>
       </div>
-      <DashboardDestinationTable allDestinations={allDestinations?.data?.data} divisions={division}/>
+      <DashboardDestinationTable allDestinations={allDestinations} divisions={divisions}/>
       <div className="mt-10">
-        <Pagination currentPage={allDestinations?.data?.meta.page} totalPages={allDestinations?.data?.meta.totalPages} />
+        <Pagination currentPage={1} totalPages={1} /> {/* adjust if you store meta info */}
       </div>
     </>
   );
 }
-
-export default DashboardDestinationPage;

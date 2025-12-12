@@ -1,3 +1,4 @@
+"use client"
 
 import { Card, CardContent, CardHeader, CardTitle } from "../../../ui/card";
 import { Users, CreditCard, Car, Calendar } from "lucide-react";

@@ -176,7 +176,9 @@ export function UserTripModal({ trip, onCancel, visible, destinations }: TripEdi
                                   <Input placeholder="Image URL" className="pl-10 h-10 sm:h-11 text-sm sm:text-base" value={field.value} onChange={field.onChange} />
                                 </div>
                                 <div className="relative">
-                                  <Input type="file" accept="image/*" className="hidden" ref={fileInputRef} onChange={handleImageUpload} />
+                                  <Input type="file" accept="image/*" className="hidden" 
+                                  ref={fileInputRef} 
+                                  onChange={handleImageUpload} />
 
                                   {imageUploading ? <Spinner className="size-10" /> : <Button type="button" variant="outline" size="icon" onClick={handleImageClick}>
                                     <Upload className="h-4 w-4" />

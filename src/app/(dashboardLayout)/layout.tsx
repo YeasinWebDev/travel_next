@@ -1,8 +1,5 @@
-export const dynamic = "force-dynamic";
-
-
 import { AppSidebar } from "@/src/components/dashboard/app-sidebar";
-import { SidebarProvider, SidebarTrigger, useSidebar } from "@/src/components/ui/sidebar";
+import { SidebarProvider, SidebarTrigger } from "@/src/components/ui/sidebar";
 
 const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
   return (

@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic";
+
 
 
 import DashboardTripsFilter from "@/src/components/dashboard/admin/trips/DashboardTripsFilter";

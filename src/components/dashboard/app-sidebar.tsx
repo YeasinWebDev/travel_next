@@ -1,15 +1,40 @@
+"use client";
+
 import * as React from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 
 import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarRail } from "@/src/components/ui/sidebar";
-import Link from "next/link";
+
 import { getUser } from "@/src/services/auth/getme";
 import { getNavItemsByRole } from "@/src/lib/navItems.config";
 import DashboardSideBarContent from "./DashboardSideBarContent";
 import UserCard from "./UserCard";
+import { Spinner } from "../ui/spinner";
 
-export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const userInfo = await getUser();
-  const navItems = getNavItemsByRole(userInfo?.role || []);
+export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
+  const [userInfo, setUserInfo] = useState<any>(null);
+  const [navItems, setNavItems] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const user = await getUser();
+      setUserInfo(user);
+      const nav = getNavItemsByRole(user?.role || []);
+      setNavItems(nav);
+    };
+    fetchData();
+  }, []);
+
+  // Show loading while fetching user info
+  if (!userInfo) {
+    return (
+      <div>
+        <Spinner />
+      </div>
+    );
+  }
+
   return (
     <Sidebar {...props}>
       <SidebarHeader>
@@ -23,6 +48,7 @@ export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sideb
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
+
       <SidebarContent>
         <SidebarGroup>
           <SidebarMenu>
@@ -30,9 +56,11 @@ export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sideb
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
+
       <SidebarFooter>
         <UserCard userInfo={userInfo} />
       </SidebarFooter>
+
       <SidebarRail />
     </Sidebar>
   );

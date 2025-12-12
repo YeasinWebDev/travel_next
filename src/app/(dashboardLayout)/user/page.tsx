@@ -5,9 +5,9 @@ async function page() {
   const data = await getAllStatsForUser()
 
   return (
-    <>
+    <div>
     <AnalyticsPage data={data?.data}/>
-    </>
+    </div>
   )
 }
 
