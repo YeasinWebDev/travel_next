@@ -1,17 +1,11 @@
 // app/(dashboardLayout)/profile/page.tsx
 export const dynamic = 'force-dynamic'; 
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "../../components/ui/avatar";
-import { Button } from "../../components/ui/button";
-import { Badge } from "../../components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../components/ui/tabs";
-import { User, Mail, MapPin, Edit, Calendar, Shield, Activity, Globe, Briefcase, Heart } from "lucide-react";
-import { format } from "date-fns";
-import { IUser } from "@/src/app/types/trips.types";
-import UpdateProfileModal from "@/src/app/components/shared/UpdateProfileModal";
+import { Card, CardContent } from "../../components/ui/card";
+import { User } from "lucide-react";
+
 import { getUser } from "../../services/auth/getme";
-import { IUserRole } from "../../proxy";
+
 import ProfileClient from "../../components/dashboard/profile/page";
 
 export default async function ProfilePage() {

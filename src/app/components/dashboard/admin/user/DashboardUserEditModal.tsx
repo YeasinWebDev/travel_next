@@ -41,7 +41,7 @@ function DashboardUserEditModal({editDialogOpen,setEditDialogOpen,selectedUser ,
                     className={`ml-2 ${
                       selectedUser?.status === 'active' 
                         ? 'bg-green-500 hover:bg-green-600' 
-                        : 'bg-gray-500 hover:bg-gray-600'
+                        : 'bg-gray-500 hover:bg-gray-600 text-white'
                     } capitalize`}
                   >
                     {selectedUser?.status}

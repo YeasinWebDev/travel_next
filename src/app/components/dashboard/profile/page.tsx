@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
 import { Button } from "../../ui/button";
@@ -20,6 +20,10 @@ export default function ProfileClient({ initialUser }: ProfileClientProps) {
   const [user, setUser] = useState<IUser | null>(initialUser);
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
   const [reload, setReload] = useState(false);
+
+  useEffect(() => {
+    setUser(initialUser);
+  }, [initialUser, reload]);
 
   if (!user) {
     return (
