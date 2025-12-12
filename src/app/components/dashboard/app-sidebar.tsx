@@ -1,7 +1,7 @@
-"use client";
+// "use client";
 
 import * as React from "react";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import Link from "next/link";
 
 import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarRail } from "@/src/app/components/ui/sidebar";
@@ -9,32 +9,34 @@ import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarHeader, Si
 import { getNavItemsByRole } from "@/src/app/lib/navItems.config";
 import DashboardSideBarContent from "./DashboardSideBarContent";
 import UserCard from "./UserCard";
-import { Spinner } from "../ui/spinner";
+// import { Spinner } from "../ui/spinner";
 import { getUser } from "../../services/auth/getme";
 
-export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
-  const [userInfo, setUserInfo] = useState<any>(null);
-  const [navItems, setNavItems] = useState<any[]>([]);
+export async function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
+  const userInfo =  await getUser();
+  const navItems = getNavItemsByRole(userInfo?.role || []);
+  // const [userInfo, setUserInfo] = useState<any>(null);
+  // const [navItems, setNavItems] = useState<any[]>([]);
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    const fetchData = async () => {
-      const user = await getUser();
-      setUserInfo(user);
-      const nav = getNavItemsByRole(user?.role || []);
-      setNavItems(nav);
-    };
-    fetchData();
-  }, []);
+  //   const fetchData = async () => {
+  //     const user = await getUser();
+  //     setUserInfo(user);
+  //     const nav = getNavItemsByRole(user?.role || []);
+  //     setNavItems(nav);
+  //   };
+  //   fetchData();
+  // }, []);
 
-  // Show loading while fetching user info
-  if (!userInfo) {
-    return (
-      <div>
-        <Spinner />
-      </div>
-    );
-  }
+  // // Show loading while fetching user info
+  // if (!userInfo) {
+  //   return (
+  //     <div>
+  //       <Spinner />
+  //     </div>
+  //   );
+  // }
 
   return (
     <Sidebar {...props}>

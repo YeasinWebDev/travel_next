@@ -1,4 +1,4 @@
-"use client"
+// "use client"
 
 import { AppSidebar } from "@/src/app/components/dashboard/app-sidebar";
 import { SidebarProvider, SidebarTrigger } from "@/src/app/components/ui/sidebar";

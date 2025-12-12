@@ -17,7 +17,8 @@ export default async function DashboardDestinationPage({
 }: { 
   searchParams: { [key: string]: string | string[] | undefined } 
 }) {
-  const querystring = queryStringFormatter(searchParams);
+   const searchParamsObj = await searchParams;
+  const querystring = queryStringFormatter(searchParamsObj);
   
   // Fetch data directly in server component
   const [destinationsData, divisionsData] = await Promise.all([
