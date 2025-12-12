@@ -1,6 +1,5 @@
 export const dynamic = "force-dynamic";
 
-
 import DashboardUserHeader from "@/src/components/dashboard/admin/user/DashboardUserHeader";
 import DashboardUserTable from "@/src/components/dashboard/admin/user/DashboardUserTable";
 import ClearFilters from "@/src/components/shared/ClearFilters";

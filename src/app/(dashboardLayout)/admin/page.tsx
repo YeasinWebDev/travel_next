@@ -1,4 +1,7 @@
 
+export const dynamic = "force-dynamic";
+
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../components/ui/card"
 import { Tabs, TabsContent} from "../../../components/ui/tabs"
 import { StatsCards } from "@/src/components/dashboard/admin/dashboard/stats-cards"
