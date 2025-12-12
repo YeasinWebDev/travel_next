@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'; 
+
 import AnalyticsPage from '@/src/app/components/dashboard/user/Analytics'
 import { getAllStatsForUser } from '../../services/stats/stats'
 

@@ -1,4 +1,3 @@
-// /app/admin/destination/page.js
 export const dynamic = 'force-dynamic'; // Add this
 
 import DashboardDestinationHeader from "@/src/app/components/dashboard/admin/destination/DashboardDestinationHeader";

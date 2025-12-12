@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'; // Add this
+
 import DashboardTripsFilter from "@/src/app/components/dashboard/admin/trips/DashboardTripsFilter";
 import UserTripsHeader from "@/src/app/components/dashboard/user/trips/UserTripsHeader";
 import { TripTable } from "@/src/app/components/dashboard/user/trips/UserTripTable";

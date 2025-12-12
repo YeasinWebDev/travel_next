@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'; // Add this
+
 import UserBookingHeader from "@/src/app/components/dashboard/user/bookings/UserBookingHeader";
 import UserBookingTable from "@/src/app/components/dashboard/user/bookings/UserBookingTable";
 import ClearFilters from "@/src/app/components/shared/ClearFilters";
