@@ -1,4 +1,4 @@
-import { getCookie } from "../services/auth/tokenHandler";
+import { getCookie } from "../app/tokenHandler";
 
 const serverFetchHelper = async (
   endpoint: string,

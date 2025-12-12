@@ -1,7 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { removeCookie } from "./tokenHandler";
+import { removeCookie } from "../../app/tokenHandler";
 import { revalidateTag } from "next/cache";
 
 export const logoutUser = async () => {

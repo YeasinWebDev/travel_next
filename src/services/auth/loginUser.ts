@@ -1,7 +1,7 @@
 "use server";
 
 import z from "zod";
-import { setCookie } from "./tokenHandler";
+import { setCookie } from "../../app/tokenHandler";
 import { ZodValidation } from "@/src/lib/zodValidation";
 
 const loginValidationZodSchema = z.object({

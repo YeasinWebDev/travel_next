@@ -1,6 +1,6 @@
 "use server";
 
-import { getCookie } from "./tokenHandler";
+import { getCookie } from "../../app/tokenHandler";
 
 export const getUser = async () => {
   try {

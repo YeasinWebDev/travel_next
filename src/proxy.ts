@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import Jwt from "jsonwebtoken";
-import { removeCookie } from "./services/auth/tokenHandler";
+import { removeCookie } from "./app/tokenHandler";
 
 export enum IUserRole {
   USER = "user",
