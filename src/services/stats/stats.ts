@@ -1,3 +1,6 @@
+"use server"
+
+
 import { serverFetch } from "@/src/lib/server-fetch";
 
 export const getAllStats = async () => {

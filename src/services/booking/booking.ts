@@ -1,3 +1,5 @@
+"use server"
+
 import { serverFetch } from "@/src/lib/server-fetch";
 
 export const createBooking = async (payload: { trip: string; amount: number; numberOfGuests: number }) => {
