@@ -1,3 +1,6 @@
+export const dynamic = "force-dynamic";
+
+
 import DashboardDivisionTable from "@/src/components/dashboard/admin/division/DashboardDivisionTable";
 import DashboardDivisionHeader from "@/src/components/dashboard/admin/division/DashbordDivisionHeader";
 import ClearFilters from "@/src/components/shared/ClearFilters";

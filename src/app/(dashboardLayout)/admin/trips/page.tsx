@@ -1,3 +1,6 @@
+export const dynamic = "force-dynamic";
+
+
 import DashboardTripsFilter from "@/src/components/dashboard/admin/trips/DashboardTripsFilter";
 import DashboardTripsHeader from "@/src/components/dashboard/admin/trips/DashboardTripsHeader";
 import DashboardTripsTable from "@/src/components/dashboard/admin/trips/DashboardTripsTable";

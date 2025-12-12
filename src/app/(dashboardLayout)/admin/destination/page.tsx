@@ -1,3 +1,6 @@
+export const dynamic = "force-dynamic";
+
+
 import DashboardDestinationHeader from "@/src/components/dashboard/admin/destination/DashboardDestinationHeader";
 import DashboardDestinationTable from "@/src/components/dashboard/admin/destination/DashboardDestinationTable";
 import ClearFilters from "@/src/components/shared/ClearFilters";
