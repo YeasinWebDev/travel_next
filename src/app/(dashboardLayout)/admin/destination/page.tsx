@@ -43,7 +43,7 @@ export default async function DashboardDestinationPage({
       </div>
       <DashboardDestinationTable allDestinations={allDestinations} divisions={divisionOptions}/>
       <div className="mt-10">
-        <Pagination currentPage={1} totalPages={1} />
+        <Pagination currentPage={destinationsData?.data?.meta.page} totalPages={destinationsData?.data?.meta.totalPages} />
       </div>
     </>
   );
