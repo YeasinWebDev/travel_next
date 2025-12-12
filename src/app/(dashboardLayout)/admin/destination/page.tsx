@@ -6,6 +6,7 @@ import ClearFilters from "@/src/components/shared/ClearFilters";
 import Pagination from "@/src/components/shared/Pagination";
 import SearchFilter from "@/src/components/shared/SearchFilter";
 import SelectFilter from "@/src/components/shared/SelectFilter";
+import { Spinner } from "@/src/components/ui/spinner";
 import { queryStringFormatter } from "@/src/lib/formater";
 import { getAllDestinations } from "@/src/services/destination/destination";
 import { getAllDivisions } from "@/src/services/division/division";
@@ -34,18 +35,18 @@ export default function DashboardDestinationPage({ searchParams }: { searchParam
   }, [searchParams]);
 
   if (!allDestinations || !divisions) {
-    return <div>Loading...</div>;
+    return <div><Spinner className="size-20" color="black"/></div>;
   }
 
   return (
     <>
-      <DashboardDestinationHeader divisions={divisions}/>
+      {/* <DashboardDestinationHeader divisions={divisions}/> */}
       <div className="flex flex-wrap items-center gap-5 mt-5">
         <SearchFilter placeholder="Search Destination" paramName="search" />
         <SelectFilter options={divisions} paramName="division" />
         <ClearFilters route='/admin/destination'/>
       </div>
-      <DashboardDestinationTable allDestinations={allDestinations} divisions={divisions}/>
+      {/* <DashboardDestinationTable allDestinations={allDestinations} divisions={divisions}/> */}
       <div className="mt-10">
         <Pagination currentPage={1} totalPages={1} /> {/* adjust if you store meta info */}
       </div>

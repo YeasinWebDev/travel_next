@@ -14,12 +14,12 @@ async function DashboardDivisionPage({ searchParams }: { searchParams: Promise<{
 
   return (
     <>
-      <DashboardDivisionHeader />
+      {/* <DashboardDivisionHeader /> */}
       <div className="mt-5 flex items-center gap-5">
         <SearchFilter placeholder="Search division..." paramName="search" />
         <ClearFilters route="/admin/division" />
       </div>
-      <DashboardDivisionTable divisions={allDivision?.data?.data} />
+      {/* <DashboardDivisionTable divisions={allDivision?.data?.data} /> */}
 
       <div className="mt-10">
         <Pagination currentPage={allDivision?.data?.meta.page} totalPages={allDivision?.data?.meta.totalPages} />
