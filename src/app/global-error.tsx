@@ -1,6 +1,8 @@
 // /app/global-error.tsx - MUST be in /app (root)
 'use client';
 
+import Link from "next/link";
+
 // IMPORTANT: NO IMPORTS that use useContext or any React hooks!
 
 export default function GlobalError({
@@ -38,6 +40,7 @@ export default function GlobalError({
           >
             Try again
           </button>
+          <Link href="/">Return Home</Link>
         </div>
       </body>
     </html>
