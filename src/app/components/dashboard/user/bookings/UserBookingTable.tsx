@@ -145,7 +145,7 @@ function UserBookingTable({ myBookings, onViewDetails }: UserBookingTableProps) 
                       </div>
                     </TableCell>
                     <TableCell >
-                        <p className="font-semibold">{formatCurrency(booking.amount)}</p>
+                        <p className="font-semibold">{formatCurrency(Number(booking.amount) * booking.numberOfGuests)}</p>
                     </TableCell>
                     <TableCell>
                       <div className="space-y-1">
