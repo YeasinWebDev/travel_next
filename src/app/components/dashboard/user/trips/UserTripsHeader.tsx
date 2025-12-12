@@ -1,8 +1,6 @@
 "use client";
 
-import { Plus } from "lucide-react";
 import { DashboardHeader } from "../../DashboadHeader";
-import { useState } from "react";
 
 function UserTripsHeader() {
 

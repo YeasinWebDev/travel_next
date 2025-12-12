@@ -11,8 +11,8 @@ import ConfirmDelete from "../../ConfirmDelete";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { deleteDivision } from "@/src/services/division/division";
 import { DivisionModal } from "./DashboardDivisionModal";
+import { deleteDivision } from "@/src/app/services/division/division";
 
 function DashboardDivisionTable({ divisions }: { divisions: IDivision[] }) {
   const { state } = useSidebar();

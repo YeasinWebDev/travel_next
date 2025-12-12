@@ -5,10 +5,11 @@ import { Button } from "./ui/button";
 import { Field, FieldDescription, FieldGroup, FieldLabel } from "./ui/field";
 import { Input } from "./ui/input";
 import Link from "next/link";
-import { registerUser } from "../../services/auth/registerUser";
+
 import InputFieldError from "./shared/InputFieldError";
 import { Eye, EyeOff } from "lucide-react"; 
 import toast from "react-hot-toast";
+import { registerUser } from "../services/auth/registerUser";
 
 function RegisterForm() {
   const [state, formAction, isPending] = useActionState(registerUser, null);

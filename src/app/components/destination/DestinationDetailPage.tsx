@@ -6,11 +6,11 @@ import ReactLeafletMap from "@/src/app/components/MapComponent";
 import { IDestination } from "@/src/app/types/destination.types";
 import { TripForm } from "../trip/trip-form";
 import { TripFormValues } from "@/src/app/schema/trip.schema";
-import { createTrip } from "@/src/services/trips/trips";
 import { format } from "date-fns";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { getUser } from "@/src/services/auth/getme";
+import { createTrip } from "../../services/trips/trips";
+import { getUser } from "../../services/auth/getme";
 
 export default function DestinationDetailPage({ destination }: { destination: IDestination }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);

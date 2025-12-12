@@ -1,4 +1,3 @@
-import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import TripDetailsClient from '@/src/app/components/trip/TripDetailsClient';
 import { IPrecipitants } from '@/src/app/types/trips.types';
@@ -43,10 +42,6 @@ export default async function TripDetailsPage({
   const { id } = await params;
   const trip = await getTripById(id);
   const currentUser = await getUser();
-
-  if (!trip) {
-    notFound();
-  }
 
   // Check if current user is a participant
   const isUserParticipant = currentUser 

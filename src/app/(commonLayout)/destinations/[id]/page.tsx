@@ -1,7 +1,6 @@
 import DestinationDetailPage from '@/src/app/components/destination/DestinationDetailPage';
 import { getDestinationById } from '@/src/app/services/destination/destination';
 import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 
 export async function generateMetadata({
   params,
@@ -32,9 +31,6 @@ export async function generateMetadata({
 async function page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const destination = await getDestinationById(id);
-   if (!destination.data) {
-      notFound();
-    }
   return (
     <DestinationDetailPage destination={destination.data} />
   )

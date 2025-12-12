@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'; 
 
 import DashboardUserHeader from "@/src/app/components/dashboard/admin/user/DashboardUserHeader";
 import DashboardUserTable from "@/src/app/components/dashboard/admin/user/DashboardUserTable";

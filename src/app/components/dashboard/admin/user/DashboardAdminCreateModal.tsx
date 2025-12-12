@@ -8,8 +8,8 @@ import { Input } from "../../../ui/input";
 import { Eye, EyeOff } from "lucide-react";
 import toast from "react-hot-toast";
 import InputFieldError from "@/src/app/components/shared/InputFieldError";
-import { createAdmin } from "@/src/services/auth/user";
 import { useRouter } from "next/navigation";
+import { createAdmin } from "@/src/app/services/auth/user";
 
 function DashboardAdminCreateModal({ open, setOpen }: any) {
   const [state, formAction, isPending] = useActionState(createAdmin, null);

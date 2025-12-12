@@ -13,8 +13,8 @@ import { format } from "date-fns";
 import DashboardUserEditModal from "./DashboardUserEditModal";
 import { useSidebar } from "@/src/app/components/ui/sidebar";
 import toast from "react-hot-toast";
-import { deleteUser, updateUserStatus } from "@/src/services/auth/user";
 import { useRouter } from "next/navigation";
+import { deleteUser, updateUserStatus } from "@/src/app/services/auth/user";
 
 interface DashboardUserTableProps {
   users: { data: IUser[] };

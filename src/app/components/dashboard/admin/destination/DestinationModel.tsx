@@ -14,10 +14,11 @@ import { X, Plus, Upload } from "lucide-react";
 import { IDestination } from "@/src/app/types/destination.types";
 import { ACTIVITY_OPTIONS, INTEREST_OPTIONS } from "@/src/app/utils/destination.constant";
 import { DestinationFormValues, destinationSchema } from "@/src/app/schema/destination.schema";
-import { createDestination, updateDestination, uploadImages } from "@/src/services/destination/destination";
+
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { Spinner } from "@/src/app/components/ui/spinner";
+import { createDestination, updateDestination } from "@/src/app/services/destination/destination";
 
 interface DestinationModelProps {
   open: boolean;

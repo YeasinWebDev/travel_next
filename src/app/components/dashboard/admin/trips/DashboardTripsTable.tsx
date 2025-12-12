@@ -14,7 +14,7 @@ import ConfirmDelete from "../../ConfirmDelete";
 import { format } from "date-fns";
 import { ITrip } from "@/src/app/types/trips.types";
 import DashboardTripsUpdateModal from "./DashboardTripsUpdateModal";
-import { deleteTrip } from "@/src/services/trips/trips";
+import { deleteTrip } from "@/src/app/services/trips/trips";
 
 interface DashboardTripsTableProps {
   allTrips: ITrip[];

@@ -10,9 +10,8 @@ import { Badge } from "../ui/badge";
 import { X, Loader2, Camera } from "lucide-react";
 import { toast } from "react-hot-toast";
 import { IUser } from "@/src/app/types/trips.types";
-import { uploadImages } from "@/src/services/destination/destination";
-import { updateUser } from "@/src/services/auth/user";
 import { useRouter } from "next/navigation";
+import { updateUser } from "../../services/auth/user";
 
 interface UpdateProfileModalProps {
   open: boolean;

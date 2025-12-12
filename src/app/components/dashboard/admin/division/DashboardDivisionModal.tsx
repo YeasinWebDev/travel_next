@@ -10,8 +10,8 @@ import { ImageIcon, Loader2 } from "lucide-react";
 import { IDivision } from "@/src/app/types/division.types";
 import toast from "react-hot-toast";
 import { Spinner } from "@/src/app/components/ui/spinner";
-import { createDivision, updateDivision } from "@/src/services/division/division";
 import { useRouter } from "next/navigation";
+import { createDivision, updateDivision } from "@/src/app/services/division/division";
 
 interface DivisionModalProps {
   isOpen: boolean;

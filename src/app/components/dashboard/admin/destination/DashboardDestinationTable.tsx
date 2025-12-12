@@ -9,11 +9,11 @@ import { Button } from "../../../ui/button";
 import { Eye, Pencil, Trash2, Star, MapPin, MoreHorizontal } from "lucide-react";
 import { useSidebar } from "@/src/app/components/ui/sidebar";
 import { useRouter } from "next/navigation";
-import { deleteDestination } from "@/src/services/destination/destination";
 import toast from "react-hot-toast";
 import DestinationModel from "./DestinationModel";
 import { useState } from "react";
 import ConfirmDelete from "../../ConfirmDelete";
+import { deleteDestination } from "@/src/app/services/destination/destination";
 
 interface DashboardDestinationTableProps {
   allDestinations: IDestination[];

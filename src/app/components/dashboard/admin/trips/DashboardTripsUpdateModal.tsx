@@ -8,8 +8,8 @@ import { RadioGroup, RadioGroupItem } from "../../../ui/radio-group";
 import { Badge } from "../../../ui/badge";
 import { Loader2, AlertCircle } from "lucide-react";
 import { toast } from "react-hot-toast";
-import { updateTripStatus } from "@/src/services/trips/trips";
 import { useRouter } from "next/navigation";
+import { updateTripStatus } from "@/src/app/services/trips/trips";
 // import { updateTripStatus } from "@/src/services/trip/trip"; // You'll need to create this service
 
 interface UpdateTripStatusProps {
