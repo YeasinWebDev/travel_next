@@ -16,8 +16,8 @@ export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sideb
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <Link href="/" className="text-blue-800 font-semibold text-xl flex items-center justify-center border hover:text-blue-900!">
-                Wayfare
+              <Link href="/" className="text-blue-600 font-bold text-xl flex items-center justify-center border hover:text-blue-800!">
+                WayFare
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>

@@ -132,19 +132,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-
-      {/* Fixed bottom CTA for mobile */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-blue-600 p-4">
-        <div className="container mx-auto flex justify-between items-center">
-          <div>
-            <p className="text-sm font-semibold">Ready to travel?</p>
-            <p className="text-xs opacity-90">Book your next adventure now!</p>
-          </div>
-          <button className="bg-white text-blue-600 font-semibold px-4 py-2 rounded-lg text-sm hover:bg-gray-100 transition-colors">
-            Get Started
-          </button>
-        </div>
-      </div>
     </footer>
   );
 }

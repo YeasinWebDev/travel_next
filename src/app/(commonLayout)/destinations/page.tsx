@@ -36,16 +36,16 @@ async function DestinationsPage({ searchParams }: { searchParams: Promise<{ [key
       <h1 className="text-3xl font-bold text-center">Explore Destinations</h1>
       <p className="text-center text-gray-600 mt-2">Find your perfect travel spot by searching and filtering below.</p>
       <div className="flex items-center justify-center mt-10 gap-5 flex-wrap">
-        <SearchFilter placeholder="Search destinations..." paramName="destination" />
+        <SearchFilter placeholder="Search destinations..." paramName="search" />
         <SelectFilter options={division} paramName="division" defaultValue="division" />
-        <SelectFilter
+        {/* <SelectFilter
           options={[
             { label: "Active", value: "active" },
             { label: "Inactive", value: "inactive" },
           ]}
           paramName="status"
           defaultValue="status"
-        />
+        /> */}
         <ClearFilters  route="/destinations"/>
       </div>
 

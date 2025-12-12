@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Button } from "../ui/button";
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "../ui/navigation-menu";
@@ -22,9 +22,8 @@ const navigationLinks = [
 ];
 
 export default function Navbar() {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
-  
   return (
     <header>
       <div className="container mx-auto px-4 flex h-16 items-center justify-between gap-4">
@@ -63,19 +62,20 @@ export default function Navbar() {
                 <NavigationMenuList className="flex-col items-start gap-0 md:gap-2">
                   {navigationLinks.map((link, index) => (
                     <NavigationMenuItem key={index} className="w-full">
-                      <NavigationMenuLink asChild className="py-1.5">
+                      <NavigationMenuLink asChild className="py-1.5 text-[15px] pt-2">
                         <Link href={link.href}>{link.label} </Link>
                       </NavigationMenuLink>
                     </NavigationMenuItem>
                   ))}
-                  <DashboardBtn/>
+                  <div className="pl-2 text-[15px] py-2">
+                    <DashboardBtn />
+                  </div>
                 </NavigationMenuList>
               </NavigationMenu>
             </PopoverContent>
           </Popover>
-          <Link href="/" className="text-blue-800 font-semibold text-xl">
-            {/* <Logo /> */}
-            Way<span className="text-blue-400">fare</span>
+          <Link href="/" className="font-bold text-blue-600 text-xl">
+            WayFare
           </Link>
         </div>
         <div className="flex items-center gap-6">
@@ -86,7 +86,12 @@ export default function Navbar() {
                 <React.Fragment key={index}>
                   {link.role === "PUBLIC" && (
                     <NavigationMenuItem>
-                      <NavigationMenuLink asChild className={`text-gray-600 hover:text-primary py-1.5 font-medium ${pathname.split("/")[1] === link.label.toLowerCase() ? "text-primary bg-gray-100 font-semibold" : ""}`}>
+                      <NavigationMenuLink
+                        asChild
+                        className={`text-gray-600 hover:text-primary py-1.5 font-medium ${
+                          pathname.split("/")[1] === link.label.toLowerCase() ? "text-primary bg-gray-100 font-semibold" : ""
+                        }`}
+                      >
                         <Link href={link.href}>{link.label}</Link>
                       </NavigationMenuLink>
                     </NavigationMenuItem>
@@ -103,13 +108,13 @@ export default function Navbar() {
                     )} */}
                 </React.Fragment>
               ))}
-              <DashboardBtn/>
+              <DashboardBtn />
             </NavigationMenuList>
           </NavigationMenu>
         </div>
         {/* Right side */}
         <div className="flex items-center gap-2">
-         <AuthButton/>
+          <AuthButton />
         </div>
       </div>
     </header>

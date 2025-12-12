@@ -35,7 +35,7 @@ export default function TripCard({ trip }: TripCardProps) {
 
   return (
     <Link href={`/trips/${trip._id}`}>
-      <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer group">
+      <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer group">
         {/* Image Section */}
         <div className="relative h-48 w-full overflow-hidden">
           <Image

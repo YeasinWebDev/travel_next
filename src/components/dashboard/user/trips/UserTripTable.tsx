@@ -275,7 +275,7 @@ export function TripTable({ trips,  destinations}: TripTableProps) {
         description={`Are you sure you want to delete "${targetTrip?.title}"? This action cannot be undone.`}
       />
 
-      <UserTripModal trip={targetTrip} visible={EditModalOpen} onCancel={() => setEditModalOpen(false)} destinations={destinations}/>
+      <UserTripModal trip={targetTrip!} visible={EditModalOpen} onCancel={() => setEditModalOpen(false)} destinations={destinations}/>
     </div>
   );
 }

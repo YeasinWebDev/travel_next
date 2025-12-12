@@ -2,7 +2,6 @@
 
 import { serverFetch } from "@/src/lib/server-fetch";
 import { revalidateTag } from "next/cache";
-import { getCookie } from "../auth/tokenHandler";
 
 export const createDestination = async (payload: any, image: string[]) => {
   const payloadData = { ...payload, image: image };
@@ -101,14 +100,14 @@ export const deleteDestination = async (id: string) => {
 export const uploadImages = async (files: File[]) => {
   const formData = new FormData();
   files.forEach((file) => formData.append("images", file));
-  console.log(files)
+  
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/destination/imageUpload`, {
       method: "POST",
       body: formData,
     });
     const data = await res.json();
-    console.log(data?.urls);
+    
     return data?.urls;
   } catch (error) {
     console.log(error);

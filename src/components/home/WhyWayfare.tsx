@@ -39,13 +39,13 @@ export default function WhyWayfare() {
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-6">
         <HeaderSection
-          title="Why Wayfare?"
-          description="Discover why thousands of travelers trust Wayfare for safe, easy, and enjoyable trips."
+          title="Why WayFare?"
+          description="Discover why thousands of travelers trust WayFare for safe, easy, and enjoyable trips."
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {features.map((item, index) => (
-            <div key={index} className="bg-white shadow-lg p-8 rounded-xl hover:shadow-xl transition duration-300 flex flex-col items-start gap-4 min-h-[200px]">
+            <div key={index} className="bg-white shadow-lg p-8 rounded-xl hover:shadow-xl transition duration-300 flex flex-col items-start gap-4 min-h-[200px] cursor-pointer hover:scale-105">
               <span className="text-4xl text-blue-600">{item.icon}</span>
 
               <h3 className="text-xl font-semibold">{item.title}</h3>

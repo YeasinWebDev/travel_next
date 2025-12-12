@@ -10,7 +10,7 @@ interface DestinationCardProps {
 export default function DestinationCard({ destination }: DestinationCardProps) {
   return (
     <Link href={`/destinations/${destination._id}`}>
-      <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer">
+      <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer">
         {/* Image Section */}
         <div className="relative h-48 w-full">
           <Image

@@ -25,7 +25,7 @@ import { useRouter } from "next/navigation";
 import { Spinner } from "@/src/components/ui/spinner";
 
 interface TripEditModalProps {
-  trip: ITrip;
+  trip: ITrip ;
   visible: boolean;
   onCancel: () => void;
   destinations: Array<{ id: string; name: string }>;
@@ -78,19 +78,23 @@ export function UserTripModal({ trip, onCancel, visible, destinations }: TripEdi
 
   const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
-    console.log(file);
+
     setImageUploading(true);
     if (!file) return;
 
     try {
-      const formData = new FormData();
 
-      formData.append("images", file);
+        const formData = new FormData();
+      formData.append("images", file)
+      
+       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/destination/imageUpload`, {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
 
-      const uploadedImages = await uploadImages(formData);
-
-      if (uploadedImages && uploadedImages.length > 0) {
-        form.setValue("image", uploadedImages[0]);
+      if (data?.urls && data?.urls.length > 0) {
+        form.setValue("image", data.urls[0]);
       }
     } catch (error) {
       console.error("Error uploading image:", error);

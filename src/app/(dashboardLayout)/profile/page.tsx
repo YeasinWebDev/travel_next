@@ -14,7 +14,6 @@ import { getUser } from "@/src/services/auth/getme";
 import { Spinner } from "@/src/components/ui/spinner";
 import UpdateProfileModal from "@/src/components/shared/UpdateProfileModal";
 
-
 export default function ProfilePage() {
   const [user, setUser] = useState<IUser | null>(null);
   const [loading, setLoading] = useState(true);
@@ -74,7 +73,7 @@ export default function ProfilePage() {
                     <Shield className="h-3 w-3" />
                     {user.role.toUpperCase()}
                   </Badge>
-                  <Badge variant={user.status === "active" ? "success" : "outline"} className="flex items-center gap-1">
+                  <Badge variant={user.status === "active" ? "default" : "outline"} className="flex items-center gap-1">
                     <Activity className="h-3 w-3" />
                     {user.status || "active"}
                   </Badge>
@@ -173,7 +172,7 @@ export default function ProfilePage() {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-muted-foreground">Account Status</label>
                   <div>
-                    <Badge variant={user.status === "active" ? "success" : "outline"} className="flex items-center gap-1 w-fit">
+                    <Badge variant={user.status === "active" ? "default" : "outline"} className="flex items-center gap-1">
                       <Activity className="h-3 w-3" />
                       {user.status || "active"}
                     </Badge>

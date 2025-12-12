@@ -1,31 +1,16 @@
 "use client";
 
-import { getAllStatsForUser } from "@/src/services/stats/stats";
 import { Card, CardHeader, CardTitle, CardContent } from "../../../components/ui/card";
 
-import { LineChart, Line, CartesianGrid, XAxis, Tooltip, PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+import { Tooltip, PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { RevenueChart } from "../admin/dashboard/revenue-chart";
 
 export default function AnalyticsPage(data: any) {
-  // Sample Data
-  const paymentData = [
-    { month: "Jan", amount: 5000 },
-    { month: "Feb", amount: 12000 },
-    { month: "Mar", amount: 9000 },
-    { month: "Apr", amount: 15000 },
-  ];
-
-  const bookingData = [
-    { name: "Completed", value: 14 },
-    { name: "Cancelled", value: 4 },
-    { name: "Pending", value: 2 },
-  ];
 
   const COLORS = ["#22c55e", "#ef4444", "#3b82f6"];
 
   if (!data) return <div>Loading...</div>;
 
-  console.log(data?.data?.statsByMonth);
 
   return (
     <div className="space-y-8">
