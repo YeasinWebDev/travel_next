@@ -323,7 +323,7 @@ const TripDetailsClient: React.FC<TripDetailsClientProps> = ({ trip, currentUser
                   {/* Price */}
                   <div className="mb-6">
                     <div className="flex items-baseline gap-2 mb-2">
-                      <span className="text-3xl font-bold">৳ {trip.destination.price}</span>
+                      <span className="text-3xl font-bold"> {trip.destination.price} <span className="text-sm">bdt</span></span>
                       <span className="text-gray-500">per person</span>
                     </div>
                     <p className="text-gray-600 text-sm">All fees and taxes included</p>

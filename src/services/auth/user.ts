@@ -88,7 +88,7 @@ export const createAdmin = async (_currentState: any, formData: any): Promise<an
 
     newFormData.append("data", JSON.stringify({ ...validatedFields, role: "admin" }));
     if (validatedFields.profileImage) {
-      newFormData.append("image", formData.get("image") as Blob);
+      newFormData.append("file", formData.get("image") as Blob);
     }
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/create`, {
@@ -134,6 +134,23 @@ export const updateUser = async (email: string, formData: any) => {
 
     const data = await res.json();
 
+    return data;
+  } catch (error) {
+    console.log(error);
+    return {
+      success: false,
+      data: [],
+      message: error,
+    };
+  }
+};
+
+export const myBookings = async (queryString: string) => {
+  try {
+    const res = await serverFetch.get(`/user/my-bookings${queryString ? `?${queryString}` : ""}`, { next: { tags: ["user"] } });
+
+    const data = await res.json();
+    
     return data;
   } catch (error) {
     console.log(error);

@@ -58,7 +58,7 @@ export default function UpdateProfileModal({ open, onOpenChange, user, reload, s
   const [isLoading, setIsLoading] = useState(false);
   const [newInterest, setNewInterest] = useState("");
   const [uploading, setUploading] = useState(false);
-  const router = useRouter()
+  const router = useRouter();
 
   // Initialize form data when user changes
   useEffect(() => {
@@ -111,18 +111,19 @@ export default function UpdateProfileModal({ open, onOpenChange, user, reload, s
     setUploading(true);
     try {
       const formData = new FormData();
-
-      // Add image files
-      formData.append("images", file);
-
+      formData.append("images", file)
       // Upload images if any
-      const res = await uploadImages(formData);
-    
-      if(res.success === false) {
+       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/destination/imageUpload`, {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+
+      if(!data.urls) {
         onOpenChange(false);
-        return toast.error(res.message)
+        return toast.error("An error occurred while uploading images")
       }
-      const newUploadedImages = res?.data || [];
+      const newUploadedImages = data.urls || [];
 
       setFormData((prev) => ({
         ...prev,
@@ -279,11 +280,11 @@ export default function UpdateProfileModal({ open, onOpenChange, user, reload, s
           </div>
         </div>
 
-        <DialogFooter className="gap-2 sm:gap-0">
+        <DialogFooter className="gap-2 ">
           <Button variant="outline" onClick={() => onOpenChange(false)} disabled={isLoading}>
             Cancel
           </Button>
-          <Button onClick={handleSubmit} disabled={isLoading} className="min-w-[120px]">
+          <Button onClick={handleSubmit} disabled={isLoading || uploading} className="min-w-[120px]">
             {isLoading ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />

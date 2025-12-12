@@ -62,7 +62,7 @@ export default function DestinationDetailPage({ destination }: { destination: ID
 
   },[])
 
-
+console.log(destination.image[0])
   return (
     <>
       <div className="min-h-screen bg-gray-50 py-8">
@@ -176,7 +176,7 @@ export default function DestinationDetailPage({ destination }: { destination: ID
                   {/* Price Card */}
                   <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">
                     <div className="mb-4">
-                      <span className="text-3xl font-bold text-blue-600">৳{destination?.price}</span>
+                      <span className="text-3xl font-bold text-blue-600">{destination?.price} <span className="text-sm">bdt</span></span>
                       <span className="text-gray-600 ml-2">per person</span>
                     </div>
                     <button

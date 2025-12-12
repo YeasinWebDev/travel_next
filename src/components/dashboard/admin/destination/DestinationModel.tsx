@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "../../../ui/dialog";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "../../../ui/form";
 import { Input } from "../../../ui/input";
@@ -18,6 +17,7 @@ import { DestinationFormValues, destinationSchema } from "@/src/schema/destinati
 import { createDestination, updateDestination, uploadImages } from "@/src/services/destination/destination";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { Spinner } from "@/src/components/ui/spinner";
 
 interface DestinationModelProps {
   open: boolean;
@@ -32,9 +32,8 @@ export default function DestinationModel({ open, onOpenChange, destination, divi
   const [newInterest, setNewInterest] = useState("");
   const [activities, setActivities] = useState<string[]>([]);
   const [newActivity, setNewActivity] = useState("");
-  const [imageFiles, setImageFiles] = useState<File[]>([]);
-  const [existingImages, setExistingImages] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
+  const [loadingImage, setLoadingImage] = useState(false);
 
   const router = useRouter();
 
@@ -66,7 +65,6 @@ export default function DestinationModel({ open, onOpenChange, destination, divi
         bestTimeToVisit: destination.bestTimeToVisit,
         coordinates: destination.coordinates,
       });
-      setExistingImages(destination.image || []);
       setImagePreviews(destination.image || []);
       setInterests(destination.interests || []);
       setActivities(destination.activities || []);
@@ -81,11 +79,9 @@ export default function DestinationModel({ open, onOpenChange, destination, divi
         bestTimeToVisit: "",
         coordinates: undefined,
       });
-      setExistingImages([]);
       setImagePreviews([]);
       setInterests([]);
       setActivities([]);
-      setImageFiles([]);
     }
   }, [destination, form]);
 
@@ -93,28 +89,19 @@ export default function DestinationModel({ open, onOpenChange, destination, divi
     setLoading(true);
 
     try {
-      const formData = new FormData();
-
-      // Add image files
-      imageFiles.forEach((file) => {
-        formData.append("images", file);
-      });
-
-      // Upload images if any
-      const res = await uploadImages(formData);
-      const newUploadedImages = res || [];
-
       const payload = {
         ...data,
         activities,
         interests,
-        image: [...(existingImages || []), ...newUploadedImages],
+        image: [...imagePreviews],
       };
 
       if (destination) {
         await updateDestination(destination._id!, payload);
+        toast.success("Destination update successfully!");
       } else {
-        await createDestination(payload, newUploadedImages);
+        await createDestination(payload, imagePreviews);
+        toast.success("Destination created successfully!");
       }
 
       router.refresh();
@@ -125,7 +112,6 @@ export default function DestinationModel({ open, onOpenChange, destination, divi
       setImagePreviews([]);
       setInterests([]);
       setActivities([]);
-      setImageFiles([]);
     } catch (error) {
       console.log(error);
       toast.error("Failed to save destination");
@@ -134,16 +120,32 @@ export default function DestinationModel({ open, onOpenChange, destination, divi
     }
   };
 
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []);
 
-    // Save actual files
-    setImageFiles((prev) => [...prev, ...files]);
+    if (!files.length) return toast.error("No image selected");
+    setLoadingImage(true);
 
-    // Generate previews using createObjectURL
-    const newPreviewUrls = files.map((file) => URL.createObjectURL(file));
+    const formData = new FormData();
+    files.forEach((file) => formData.append("images", file));
 
-    setImagePreviews((prev) => [...prev, ...newPreviewUrls]);
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/destination/imageUpload`, {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+
+      if (!data?.urls || !data?.urls.length) {
+        return toast.error("Upload failed");
+      }
+      setImagePreviews((prev) => [...prev, ...data?.urls]);
+    } catch (err) {
+      console.error(err);
+      toast.error("Image upload failed");
+    } finally {
+      setLoadingImage(false);
+    }
   };
 
   const removeImage = (index: number) => {
@@ -152,11 +154,7 @@ export default function DestinationModel({ open, onOpenChange, destination, divi
     // remove from preview
     setImagePreviews((prev) => prev.filter((_, i) => i !== index));
 
-    // remove from existing DB images list
-    setExistingImages((prev) => prev.filter((img) => img !== removed));
-
     // remove from local uploaded files
-    setImageFiles((prev) => prev.filter((_, i) => i !== index));
   };
 
   const addInterest = () => {
@@ -183,7 +181,7 @@ export default function DestinationModel({ open, onOpenChange, destination, divi
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="w-full lg:!w-[70vw] xl:!w-[50vw] !max-w-none max-h-[90vh] overflow-y-auto border border-red-600">
+      <DialogContent className="w-full lg:!w-[70vw] xl:!w-[50vw] !max-w-none max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>{destination ? "Edit Destination" : "Create New Destination"}</DialogTitle>
           <DialogDescription>{destination ? "Update the destination details below." : "Fill in the details to create a new destination."}</DialogDescription>
@@ -361,13 +359,23 @@ export default function DestinationModel({ open, onOpenChange, destination, divi
                         </button>
                       </div>
                     ))}
-                    <label className="border-2 border-dashed border-gray-300 rounded-md flex flex-col items-center justify-center h-24 cursor-pointer hover:border-primary transition-colors">
-                      <Upload className="h-6 w-6 text-gray-400 mb-2" />
-                      <span className="text-sm text-gray-500">{imagePreviews.length > 0 ? "Add More" : "Upload"}</span>
-                      <input type="file" multiple accept="image/*" className="hidden" onChange={handleImageUpload} />
-                    </label>
+                    {loadingImage ? (
+                      <div className="flex items-center justify-center h-24 rounded-md bg-gray-200 animate-pulse">
+                        <Spinner className="size-14" color="black" />
+                      </div>
+                    ) : (
+                      <label className="border-2 border-dashed border-gray-300 rounded-md flex flex-col items-center justify-center h-24 cursor-pointer hover:border-primary transition-colors">
+                        <Upload className="h-6 w-6 text-gray-400 mb-2" />
+                        <span className="text-sm text-gray-500">{imagePreviews.length > 0 ? "Add More" : "Upload"}</span>
+                        <input type="file" multiple accept="image/*" className="hidden" onChange={handleImageUpload} />
+                      </label>
+                    )}
                   </div>
-                  <FormDescription>{destination ? "Upload new images to replace or add to existing ones" : "Upload at least one image for the destination"}</FormDescription>
+                  {loadingImage ? (
+                    <FormDescription>Uploading...</FormDescription>
+                  ) : (
+                    <FormDescription>{destination ? "Upload new images to replace or add to existing ones" : "Upload at least one image for the destination"}</FormDescription>
+                  )}
                 </div>
 
                 {/* Interests */}
@@ -460,7 +468,7 @@ export default function DestinationModel({ open, onOpenChange, destination, divi
               <Button type="button" variant="outline" onClick={() => onOpenChange(false)} disabled={loading}>
                 Cancel
               </Button>
-              <Button type="submit" disabled={loading}>
+              <Button type="submit" disabled={loading || loadingImage}>
                 {loading ? (
                   <>
                     <div className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent mr-2" />

@@ -40,6 +40,11 @@ export const getNavItemsByRole = (role: string) => {
             url: "/user/trips",
             icon: "TentTree"
         },
+        {
+            title: "Bookings",
+            url: "/user/bookings",
+            icon: "Calendar"
+        },
          {
             title:"Profile",
             url:"/profile",

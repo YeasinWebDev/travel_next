@@ -28,7 +28,7 @@ export default function DestinationCard({ destination }: DestinationCardProps) {
           </div>
           {/* Price Tag */}
           <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-lg">
-            <span className="font-bold text-blue-600">৳{destination.price}</span>
+            <span className="font-bold text-blue-600">{destination.price} <span className="text-sm">bdt</span></span>
             <span className="text-xs text-gray-600 ml-1">per person</span>
           </div>
         </div>

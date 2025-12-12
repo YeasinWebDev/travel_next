@@ -132,10 +132,10 @@ export default function TripCard({ trip }: TripCardProps) {
               
               {/* Price if available */}
               {trip?.destination?.price && (
-                <div className="text-right">
-                  <div className="text-lg font-bold text-blue-600">
-                    ৳{trip.destination.price}
-                  </div>
+                <div>
+                  <h3 className="text-lg font-bold text-blue-600 ">
+                    {trip.destination.price} <span className="text-sm">bdt</span>
+                  </h3>
                   <div className="text-xs text-gray-500">per person</div>
                 </div>
               )}

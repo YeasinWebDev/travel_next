@@ -1,8 +1,15 @@
+import AnalyticsPage from '@/src/components/dashboard/user/Analytics'
+import { getAllStatsForUser } from '@/src/services/stats/stats'
 import React from 'react'
 
-function page() {
+async function page() {
+  const data = await getAllStatsForUser()
+  console.log(data?.data)
+
   return (
-    <div>page</div>
+    <>
+    <AnalyticsPage data={data?.data}/>
+    </>
   )
 }
 
