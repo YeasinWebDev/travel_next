@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# WayFare || [Backend](https://github.com/YeasinWebDev/travel_api) || [Live](https://travel-next-blush.vercel.app/) 
 
-## Getting Started
+WayFare is a modern travel planning platform where users can explore destinations, create trips, join trips through secure Stripe payments, and receive automated invoices via email. The system includes dedicated dashboards for both users and admins, enabling a smooth and organized travel experience.
 
-First, run the development server:
+
+---
+## 👥 Test User Roles
+
+| Role  | Email                    | Password |
+|-------|--------------------------|----------|
+| Admin | arafat@gmail.com         | 123456   |
+| User  | user@gmail.com           | 123456   |
+---
+
+## 🧭 User Features  
+- Browse all available destinations
+- Create custom trips with detailed information.
+- Join any trip using Stripe secure payments.
+- Receive invoice emails automatically after successful payment.
+- View personal activities, joined trips, and payments inside a dedicated User Dashboard.
+
+
+## 🛠️ Admin Features  
+- Full Admin Dashboard to manage
+    - analaytic
+    - users
+    - destination
+    - trips (status)
+    - division
+
+
+## 💳 Payment & Automation  
+- Integrated Stripe Checkout for seamless, secure payments.
+- Automatic invoice generation.
+- Email delivery of invoices and payment receipts.
+
+---
+
+## 🛠️ Tech Stack
+
+- nextjs
+- tailwind
+- shadcn
+- react-hot-toast
+- react-icons
+
+--- 
+
+## ⚙️ Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/YeasinWebDev/travel_next.git
+cd travel_next
+```
+
+### 2.Install Dependencies
+
+```bash
+npm install
+```
+
+### 3.Environment Variables
+
+```bash
+NEXT_PUBLIC_API_URL=
+JWT_SECRET=
+```
+
+
+### 4.Start the Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📧 Contact
+If you have any questions or suggestions, feel free to reach out!  
 
-## Learn More
+* Portfolio : [Yeasin Arafat](https://yeasin-arafat-portfolio.netlify.app)
+* LinkedIn: [Yeasin Arafat](https://www.linkedin.com/in/yeasinarafat121)
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
