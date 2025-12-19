@@ -3,12 +3,9 @@
 import { FaStar } from "react-icons/fa";
 import Image from "next/image";
 
-import dynamic from "next/dynamic";
-
-const Swiper = dynamic(() => import("swiper/react").then(mod => mod.Swiper), { ssr: false });
-const SwiperSlide = dynamic(() => import("swiper/react").then(mod => mod.SwiperSlide), { ssr: false });
 
 import { Autoplay, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";

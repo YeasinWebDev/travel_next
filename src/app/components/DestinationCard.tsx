@@ -16,7 +16,7 @@ export default function DestinationCard({ destination }: DestinationCardProps) {
             src={destination.image[0] || '/placeholder.jpg'}
             alt={destination.name}
             fill
-            quality={75}
+            quality={55}
             className="object-cover"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />

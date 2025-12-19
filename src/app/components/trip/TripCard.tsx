@@ -42,7 +42,7 @@ export default function TripCard({ trip }: TripCardProps) {
             src={trip.image || trip.destination?.image?.[0] || "/placeholder-trip.jpg"}
             alt={trip.title}
             fill
-            quality={75}
+            quality={55}
             className="object-cover group-hover:scale-105 transition-transform duration-300"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
