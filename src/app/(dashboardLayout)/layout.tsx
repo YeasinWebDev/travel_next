@@ -1,7 +1,8 @@
-// "use client"
+export const dynamic = 'force-dynamic'; 
 
 import { AppSidebar } from "@/src/app/components/dashboard/app-sidebar";
 import { SidebarProvider, SidebarTrigger } from "@/src/app/components/ui/sidebar";
+
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (

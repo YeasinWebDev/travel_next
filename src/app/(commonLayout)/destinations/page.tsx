@@ -10,6 +10,7 @@ import { IDivision } from "@/src/app/types/division.types";
 import { Metadata } from "next";
 import { getAllDivisions } from "../../services/division/division";
 import { getAllDestinations } from "../../services/destination/destination";
+import DestinationsLoading from "./loading";
 
 export const metadata: Metadata = {
   title: "Destinations - Wayfare",

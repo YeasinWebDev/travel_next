@@ -71,6 +71,36 @@ function LoginForm() {
           </Field>
         </FieldGroup>
       </FieldGroup>
+      {/* Demo Credentials */}
+      <div className="mt-6 rounded-xl p-1">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-800">
+          {/* Admin Card */}
+          <div className="rounded-lg border border-indigo-100 p-4 shadow-sm">
+            <h3 className="text-lg font-semibold text-indigo-600 mb-2">Admin Demo</h3>
+            <div className="text-sm space-y-1">
+              <p>
+                <span className="font-medium">Email:</span> <span className="text-gray-600">arafat@gmail.com</span>
+              </p>
+              <p>
+                <span className="font-medium">Password:</span> <span className="text-gray-600">123456</span>
+              </p>
+            </div>
+          </div>
+
+          {/* User Card */}
+          <div className="rounded-lg border border-pink-100 p-4 shadow-sm">
+            <h3 className="text-lg font-semibold text-pink-600 mb-2">User Demo</h3>
+            <div className="text-sm space-y-1">
+              <p>
+                <span className="font-medium">Email:</span> <span className="text-gray-600 pr-2">user@gmail.com</span>
+              </p>
+              <p>
+                <span className="font-medium">Password:</span> <span className="text-gray-600">123456</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </form>
   );
 }
