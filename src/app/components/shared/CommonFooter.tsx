@@ -24,7 +24,7 @@ export default function Footer() {
               <div className="w-8 h-8 bg-blue-600 rounded-full"></div>
               <span className="text-xl font-bold">TravelBuddy</span>
             </div>
-            <p className="text-gray-400 text-sm max-w-xs">
+            <p className="text-gray-300 text-sm max-w-xs">
               Your trusted travel companion for unforgettable journeys and authentic experiences.
             </p>
             
@@ -62,7 +62,7 @@ export default function Footer() {
                 <li key={link}>
                   <a 
                     href="#" 
-                    className="text-gray-400 hover:text-white transition-colors duration-300 text-sm"
+                    className="text-gray-300 hover:text-white transition-colors duration-300 text-sm"
                   >
                     {link}
                   </a>
@@ -75,15 +75,15 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
             <ul className="space-y-3">
-              <li className="flex items-center gap-3 text-gray-400 text-sm">
+              <li className="flex items-center gap-3 text-gray-300 text-sm">
                 <FaMapMarkerAlt className="text-blue-500" />
                 <span>123 Travel Street, Adventure City</span>
               </li>
-              <li className="flex items-center gap-3 text-gray-400 text-sm">
+              <li className="flex items-center gap-3 text-gray-300 text-sm">
                 <FaPhone className="text-blue-500" />
                 <span>+1 (555) 123-4567</span>
               </li>
-              <li className="flex items-center gap-3 text-gray-400 text-sm">
+              <li className="flex items-center gap-3 text-gray-300 text-sm">
                 <FaEnvelope className="text-blue-500" />
                 <span>hello@travelbuddy.com</span>
               </li>
@@ -95,14 +95,14 @@ export default function Footer() {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             {/* Copyright */}
-            <div className="text-gray-500 text-sm text-center md:text-left">
+            <div className="text-gray-300 text-sm text-center md:text-left">
               <p>
                 © {currentYear} TravelBuddy. All rights reserved.
               </p>
             </div>
 
             {/* Made with love */}
-            <div className="flex items-center gap-2 text-gray-500 text-sm">
+            <div className="flex items-center gap-2 text-gray-300 text-sm">
               <span>Made with</span>
               <FaHeart className="text-red-500 animate-pulse" />
               <span>for travelers</span>
@@ -112,19 +112,19 @@ export default function Footer() {
             <div className="flex gap-6 text-sm">
               <a 
                 href="#" 
-                className="text-gray-400 hover:text-white transition-colors duration-300"
+                className="text-gray-300 hover:text-white transition-colors duration-300 text-sm"
               >
                 Privacy Policy
               </a>
               <a 
                 href="#" 
-                className="text-gray-400 hover:text-white transition-colors duration-300"
+                className="text-gray-300 hover:text-white transition-colors duration-300 text-sm"
               >
                 Terms of Service
               </a>
               <a 
                 href="#" 
-                className="text-gray-400 hover:text-white transition-colors duration-300"
+                className="text-gray-300 hover:text-white transition-colors duration-300 text-sm"
               >
                 Cookies
               </a>

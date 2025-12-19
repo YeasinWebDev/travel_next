@@ -2,8 +2,13 @@
 
 import { FaStar } from "react-icons/fa";
 import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
+
+import dynamic from "next/dynamic";
+
+const Swiper = dynamic(() => import("swiper/react").then(mod => mod.Swiper), { ssr: false });
+const SwiperSlide = dynamic(() => import("swiper/react").then(mod => mod.SwiperSlide), { ssr: false });
+
+import { Autoplay, Pagination } from "swiper/modules";
 
 // Import Swiper styles
 import "swiper/css";
@@ -125,7 +130,7 @@ export default function Testimonials() {
                       />
                     </div>
                     <div>
-                      <h4 className="text-lg font-semibold">{review.user.name}</h4>
+                      <span className="text-lg font-semibold">{review.user.name}</span>
                       
                       {/* Rating */}
                       <div className="flex text-yellow-400">

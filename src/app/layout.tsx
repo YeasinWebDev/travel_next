@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Wayfare",
-  description: "Plan your next trip with Wayfare",
+  title: "WayFare",
+  description: "Plan your next trip with WayFare",
 };
 
 export default function RootLayout({
@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <LenisWrapper>{children}</LenisWrapper>
+        <LenisWrapper><main>{children}</main></LenisWrapper>
         <Toaster />
       </body>
     </html>

@@ -1,8 +1,9 @@
 import Image from "next/image";
-import Banner from "../../../../public/images/travel_hero.jpg";
+import Banner from "../../../../public/images/travel_hero.webp";
 import { Button } from "../ui/button";
 import HeaderSection from "../shared/HeaderSection";
 import Navbar from "../shared/CommonNavbar";
+import Link from "next/link";
 
 function Hero() {
   return (
@@ -25,13 +26,27 @@ function Hero() {
           />
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button className="text-sm sm:text-base px-8 py-4 sm:px-10 sm:py-6 bg-primary text-white font-semibold rounded-full shadow-lg hover:bg-primary/80 transition">
+            <Link
+              href="/trips"
+              className="
+                    inline-flex items-center justify-center
+                    text-sm
+                    px-5 py-3
+                    min-h-[44px] min-w-[44px]
+                    bg-primary text-white font-semibold
+                    rounded-full shadow-md
+                    hover:bg-primary/90 hover:scale-[1.03]
+                    transition-all duration-200
+                  "
+            >
               Start Your Journey
-            </Button>
+            </Link>
 
-            <Button className="text-sm sm:text-base px-8 py-4 sm:px-10 sm:py-6 bg-white/10 backdrop-blur-sm border border-white/30 text-white font-semibold rounded-full shadow-lg hover:bg-white/20 hover:shadow-xl transition-all">
-              Browse Destinations
-            </Button>
+            <Link href="/destinations">
+              <Button className="text-sm sm:text-base px-5 py-3 min-h-[44px] min-w-[44px] bg-white/10 backdrop-blur-sm border border-white/30 text-white font-semibold rounded-full shadow-lg hover:bg-white/20 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                Browse Destinations
+              </Button>
+            </Link>
           </div>
 
           <p className="mt-10 text-xs sm:text-sm opacity-90 flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">

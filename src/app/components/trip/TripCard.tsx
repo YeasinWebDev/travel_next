@@ -85,7 +85,7 @@ export default function TripCard({ trip }: TripCardProps) {
         <div className="p-4">
           {/* Title and Dates */}
           <div className="mb-4">
-            <h3 className="text-lg font-bold text-gray-900 line-clamp-1 mb-2">{trip.title}</h3>
+            <h1 className="text-lg font-bold text-gray-900 line-clamp-1 mb-2">{trip.title}</h1>
             
             <div className="flex items-center text-gray-600 text-sm mb-3">
               <svg className="w-4 h-4 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -133,9 +133,9 @@ export default function TripCard({ trip }: TripCardProps) {
               {/* Price if available */}
               {trip?.destination?.price && (
                 <div>
-                  <h3 className="text-lg font-bold text-blue-600 ">
+                  <h2 className="text-lg font-bold text-blue-600 ">
                     {trip.destination.price} <span className="text-sm">bdt</span>
-                  </h3>
+                  </h2>
                   <div className="text-xs text-gray-500">per person</div>
                 </div>
               )}

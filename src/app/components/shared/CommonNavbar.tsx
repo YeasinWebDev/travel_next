@@ -13,9 +13,10 @@ import DashboardBtn from "./DashboardBtn";
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
   { href: "/", label: "Home", role: "PUBLIC" },
-  { href: "/about", label: "About", role: "PUBLIC" },
   { href: "/destinations", label: "Destinations", role: "PUBLIC" },
   { href: "/trips", label: "Trips", role: "PUBLIC" },
+  { href: "/about", label: "About", role: "PUBLIC" },
+  { href: "/contact", label: "Contact", role: "PUBLIC" },
   // { href: "/admin", label: "Dashboard", },
   // { href: "/admin", label: "Dashboard",},
   // { href: "/user", label: "Dashboard", },
@@ -32,7 +33,7 @@ export default function Navbar() {
           {/* Mobile menu trigger */}
           <Popover>
             <PopoverTrigger asChild>
-              <Button className="group size-8 md:hidden" variant="ghost" size="icon">
+              <Button className="group size-8 md:hidden" aria-label="Toggle navigation" variant="ghost" size="icon">
                 <svg
                   className="pointer-events-none"
                   width={16}

@@ -151,13 +151,15 @@ export default function NewsletterSignup() {
                       )}
                     </button>
 
-                    <p className="text-xs text-gray-500 text-center">
-                      By subscribing, you agree to our{" "}
-                      <a href="#" className="text-blue-600 hover:underline">
-                        Privacy Policy
-                      </a>{" "}
-                      and consent to receive travel updates.
-                    </p>
+                    <div className="bg-white">
+                      <p className="text-sm text-gray-700 text-center">
+                        By subscribing, you agree to our{" "}
+                        <a href="#" className="text-blue-700 underline underline-offset-4 hover:text-blue-800">
+                          Privacy Policy
+                        </a>
+                        .
+                      </p>
+                    </div>
                   </form>
                 )}
 

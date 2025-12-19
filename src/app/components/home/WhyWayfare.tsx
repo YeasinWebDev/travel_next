@@ -48,7 +48,7 @@ export default function WhyWayfare() {
             <div key={index} className="bg-white shadow-lg p-8 rounded-xl hover:shadow-xl transition duration-300 flex flex-col items-start gap-4 min-h-[200px] cursor-pointer hover:scale-105">
               <span className="text-4xl text-blue-600">{item.icon}</span>
 
-              <h3 className="text-xl font-semibold">{item.title}</h3>
+              <h1 className="text-xl font-semibold">{item.title}</h1>
 
               <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
             </div>
