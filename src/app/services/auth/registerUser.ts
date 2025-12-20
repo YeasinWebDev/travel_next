@@ -55,7 +55,7 @@ export const registerUser = async (_currentState: any, formData: any): Promise<a
 
     newFormData.append("data", JSON.stringify(validatedFields));
     if (validatedFields.profileImage) {
-      newFormData.append("image", formData.get("image") as Blob);
+      newFormData.append("file", formData.get("image") as Blob);
     }
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/create`, {

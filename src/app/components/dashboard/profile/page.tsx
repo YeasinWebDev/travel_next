@@ -10,7 +10,7 @@ import { User, Mail, MapPin, Edit, Calendar, Shield, Activity, Globe, Briefcase,
 import { format } from "date-fns";
 import { IUser } from "@/src/app/types/trips.types";
 import UpdateProfileModal from "@/src/app/components/shared/UpdateProfileModal";
-import { IUserRole } from "@/src/app/proxy";
+import { IUserRole } from "@/src/proxy";
 
 interface ProfileClientProps {
   initialUser: IUser;

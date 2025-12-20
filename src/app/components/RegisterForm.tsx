@@ -7,7 +7,7 @@ import { Input } from "./ui/input";
 import Link from "next/link";
 
 import InputFieldError from "./shared/InputFieldError";
-import { Eye, EyeOff } from "lucide-react"; 
+import { Eye, EyeOff } from "lucide-react";
 import toast from "react-hot-toast";
 import { registerUser } from "../services/auth/registerUser";
 
@@ -17,12 +17,12 @@ function RegisterForm() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   if (!isPending && state?.success) {
-    toast.success("Login successful");
+    toast.success("Registration successful");
     setTimeout(() => {
-      if (state.data.user.role === "admin") {
-        window.location.href = "/admin/dashboard";
-      } else if (state.data.user.role === "user") {
-        window.location.href = "/dashboard";
+      if (state.data?.role === "admin") {
+        window.location.href = "/admin";
+      } else if (state.data?.role === "user") {
+        window.location.href = "/user";
       }
     }, 800);
   } else if (!isPending && state?.message) {

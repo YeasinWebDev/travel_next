@@ -11,12 +11,17 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { createTrip } from "../../services/trips/trips";
 import { getUser } from "../../services/auth/getme";
+import DestinationReviews from "./DestinationReviews";
+import { getAllReview } from "../../services/review/review";
+import { IUser } from "../../types/trips.types";
 
 export default function DestinationDetailPage({ destination }: { destination: IDestination }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [dialog, setDialog] = useState(false);
   const router = useRouter();
-  const [me, setMe] = useState()
+  const [me, setMe] = useState<IUser>();
+  const [reviewList, setReviewList] = useState([]);
+  const [reload, setReload] = useState(false)
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % destination?.image.length);
@@ -36,7 +41,7 @@ export default function DestinationDetailPage({ destination }: { destination: ID
 
     try {
       const res = await createTrip(tripPayload);
-      
+
       if (!res.success) {
         toast.error(res.message);
       } else {
@@ -53,21 +58,31 @@ export default function DestinationDetailPage({ destination }: { destination: ID
     }
   };
 
-    useEffect(()=>{
-    const getMe = async () =>{
-      const data = await getUser()
-      setMe(data)
-    }
-      getMe()
+  useEffect(() => {
+    const getMe = async () => {
+      const data = await getUser();
+      setMe(data);
+    };
+    getMe();
+  }, []);
 
-  },[])
+
+  useEffect(() => {
+    const getReview = async () => {
+      if (destination?._id) {
+        const data = await getAllReview(destination._id as string);
+        setReviewList(data?.data);
+      }
+    };
+    getReview();
+  }, [ destination?._id ,reload]);
 
   return (
     <>
       <div className="min-h-screen bg-gray-50 py-8">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           {/* Back Button */}
-          <button onClick={()=> router.back()} className="mb-6 flex items-center cursor-pointer">
+          <button onClick={() => router.back()} className="mb-6 flex items-center cursor-pointer">
             <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
@@ -175,19 +190,19 @@ export default function DestinationDetailPage({ destination }: { destination: ID
                   {/* Price Card */}
                   <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">
                     <div className="mb-4">
-                      <span className="text-3xl font-bold text-blue-600">{destination?.price} <span className="text-sm">bdt</span></span>
+                      <span className="text-3xl font-bold text-blue-600">
+                        {destination?.price} <span className="text-sm">bdt</span>
+                      </span>
                       <span className="text-gray-600 ml-2">per person</span>
                     </div>
                     <button
-                    disabled={me === undefined ? true : false}
+                      disabled={me === undefined ? true : false}
                       onClick={() => setDialog(true)}
                       className="w-full cursor-pointer bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors  disabled:bg-gray-300 disabled:cursor-not-allowed"
                     >
                       Create A Tour
                     </button>
-                    {
-                      me === undefined && <span className="text-sm text-red-400">Please login to create a tour</span>
-                    }
+                    {me === undefined && <span className="text-sm text-red-400">Please login to create a tour</span>}
                     <button className="mt-4 w-full border-2 cursor-pointer border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold py-3 px-4 rounded-lg transition-colors">
                       Add to Wishlist
                     </button>
@@ -271,6 +286,7 @@ export default function DestinationDetailPage({ destination }: { destination: ID
               </div>
             </div>
           </div>
+          <DestinationReviews reviewList={reviewList} currentUser={me?._id || ""} destinationId={destination._id || ""} reload={reload} setReload={setReload}/>
         </div>
       </div>
       <TripForm destination={destination} visible={dialog} onClose={() => setDialog(false)} onSubmit={handleTripSubmit} />

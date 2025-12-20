@@ -69,7 +69,6 @@ export function UserTripModal({ trip, onCancel, visible, destinations }: TripEdi
       router.refresh();
     } else {
       toast.error("Error updating trip");
-      console.log(res);
     }
 
     setLoading(false);
