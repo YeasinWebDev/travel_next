@@ -63,7 +63,10 @@ export default function Navbar() {
                 <NavigationMenuList className="flex-col items-start gap-0 md:gap-2">
                   {navigationLinks.map((link, index) => (
                     <NavigationMenuItem key={index} className="w-full">
-                      <NavigationMenuLink asChild className="py-1.5 text-[15px] pt-2">
+                      <NavigationMenuLink
+                        asChild
+                        className={`py-1.5 text-[15px] pt-2 ${pathname.split("/")[1] === link.label.toLowerCase() ? "text-primary bg-gray-100 font-semibold" : ""}`}
+                      >
                         <Link href={link.href}>{link.label} </Link>
                       </NavigationMenuLink>
                     </NavigationMenuItem>

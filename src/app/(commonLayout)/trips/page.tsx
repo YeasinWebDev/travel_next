@@ -23,7 +23,7 @@ async function TripsPage({ searchParams }: { searchParams: Promise<{ [key: strin
     <div className="container mx-auto p-5">
       <h1 className="text-3xl font-bold text-center">Explore Trips</h1>
       <p className="text-center text-gray-600 mt-2">Find your perfect travel spot by searching and filtering below.</p>
-      <div className="flex items-center justify-center mt-10 gap-5 flex-wrap">
+      <div className="flex items-start md:items-center justify-start md:justify-center mt-10 gap-5 flex-wrap">
         <SearchFilter placeholder="Search trips..." paramName="trip" />
         <DateRangeFilter />
         <ClearFilters route="/trips" />

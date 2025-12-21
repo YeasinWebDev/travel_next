@@ -21,7 +21,7 @@ export default function DestinationDetailPage({ destination }: { destination: ID
   const router = useRouter();
   const [me, setMe] = useState<IUser>();
   const [reviewList, setReviewList] = useState([]);
-  const [reload, setReload] = useState(false)
+  const [reload, setReload] = useState(false);
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % destination?.image.length);
@@ -66,7 +66,6 @@ export default function DestinationDetailPage({ destination }: { destination: ID
     getMe();
   }, []);
 
-
   useEffect(() => {
     const getReview = async () => {
       if (destination?._id) {
@@ -75,7 +74,11 @@ export default function DestinationDetailPage({ destination }: { destination: ID
       }
     };
     getReview();
-  }, [ destination?._id ,reload]);
+  }, [destination?._id, reload]);
+
+  console.log(reviewList);
+
+  const averageRating = reviewList.length > 0 ? (reviewList.reduce((sum: number, r: any) => sum + r.rating, 0) / reviewList.length).toFixed(1) : "0.0";
 
   return (
     <>
@@ -155,13 +158,16 @@ export default function DestinationDetailPage({ destination }: { destination: ID
 
                     <div className="flex items-center mb-6">
                       <div className="flex text-yellow-400 mr-2">
-                        {[...Array(5)].map((_, i) => (
-                          <svg key={i} className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        {[1, 2, 3, 4, 5].map((star) => (
+                          <svg key={star} className={`w-5 h-5 ${star <= Number(averageRating) ? "text-yellow-400" : "text-gray-300"}`} fill="currentColor" viewBox="0 0 20 20">
                             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                           </svg>
                         ))}
                       </div>
-                      <span className="text-gray-600">(4.5 • 128 reviews)</span>
+
+                      <span className="text-gray-600">
+                        {averageRating} ({reviewList.length} reviews)
+                      </span>
                     </div>
                   </div>
 
@@ -286,7 +292,7 @@ export default function DestinationDetailPage({ destination }: { destination: ID
               </div>
             </div>
           </div>
-          <DestinationReviews reviewList={reviewList} currentUser={me?._id || ""} destinationId={destination._id || ""} reload={reload} setReload={setReload}/>
+          <DestinationReviews reviewList={reviewList} currentUser={me?._id || ""} destinationId={destination._id || ""} reload={reload} setReload={setReload} />
         </div>
       </div>
       <TripForm destination={destination} visible={dialog} onClose={() => setDialog(false)} onSubmit={handleTripSubmit} />
