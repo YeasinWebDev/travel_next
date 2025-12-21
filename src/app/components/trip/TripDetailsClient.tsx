@@ -59,17 +59,6 @@ const TripDetailsClient: React.FC<TripDetailsClientProps> = ({ trip, currentUser
   return (
     <>
       <div className="min-h-screen bg-gray-50">
-        {/* Back Navigation */}
-        <div className="bg-white border-b">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between py-4">
-              <button onClick={() => router.back()} className="flex items-center text-gray-600 hover:text-gray-900 cursor-pointer">
-                <ArrowLeft className="w-5 h-5 mr-2" />
-                Back
-              </button>
-            </div>
-          </div>
-        </div>
 
         {/* Hero Section with Image Gallery */}
         <div className="relative">

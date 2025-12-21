@@ -50,7 +50,7 @@ function DestinationReviews({
   };
 
   return (
-    <div className="my-6 bg-gray-50 rounded-xl border p-5">
+    <div className="my-6 bg-white shadow-xl rounded-xl border p-5">
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-lg font-semibold">All Reviews</h1>

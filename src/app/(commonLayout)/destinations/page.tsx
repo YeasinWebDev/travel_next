@@ -10,7 +10,6 @@ import { IDivision } from "@/src/app/types/division.types";
 import { Metadata } from "next";
 import { getAllDivisions } from "../../services/division/division";
 import { getAllDestinations } from "../../services/destination/destination";
-import DestinationsLoading from "./loading";
 
 export const metadata: Metadata = {
   title: "Destinations - Wayfare",
@@ -39,14 +38,6 @@ async function DestinationsPage({ searchParams }: { searchParams: Promise<{ [key
       <div className="flex items-center justify-center mt-10 gap-5 flex-wrap">
         <SearchFilter placeholder="Search destinations..." paramName="search" />
         <SelectFilter options={division} paramName="division" defaultValue="division" />
-        {/* <SelectFilter
-          options={[
-            { label: "Active", value: "active" },
-            { label: "Inactive", value: "inactive" },
-          ]}
-          paramName="status"
-          defaultValue="status"
-        /> */}
         <ClearFilters  route="/destinations"/>
       </div>
 
