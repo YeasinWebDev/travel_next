@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { 
   FaFacebookF, 
   FaTwitter, 
@@ -11,6 +12,14 @@ import {
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+
+  const navLinks = [
+  { href: "/", label: "Home", role: "PUBLIC" },
+  { href: "/destinations", label: "Destinations", role: "PUBLIC" },
+  { href: "/trips", label: "Trips", role: "PUBLIC" },
+  { href: "/about", label: "About", role: "PUBLIC" },
+  { href: "/contact", label: "Contact", role: "PUBLIC" },
+  ];
 
   return (
     <footer className="bg-gray-900 text-white">
@@ -52,20 +61,14 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              {[
-                "Home",
-                "Destinations",
-                "Packages",
-                "About Us",
-                "Contact"
-              ].map((link) => (
-                <li key={link}>
-                  <a 
-                    href="#" 
+              {navLinks.map((link,i) => (
+                <li key={i}>
+                  <Link
+                    href={link.href}
                     className="text-gray-300 hover:text-white transition-colors duration-300 text-sm"
                   >
-                    {link}
-                  </a>
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
